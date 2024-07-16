@@ -1,3 +1,39 @@
+# How to use
+
+there are XXX_guidewire.xml
+
+if want to use the guidewire, contain the extension and then add <include file="filename.xml"/> at the place that want to use it. a example is in the combine.xml file
+
+to use it : python -m mujoco.viewer -mjcf combine.xml
+
+# Combine pid and guidewire
+
+combine_pid_act.xml in that file:
+
+to use it : python -m mujoco.viewer -mjcf combine_pid_act.xml
+
+## Pid parameter:
+
+kp:
+
+kd
+
+imax: 
+
+​	linear: 1mm 
+
+​	rotate: 
+
+slewmax
+
+## joint parameter
+
+linear motor can be simulated as type="slide" axis="0 1 0" 
+
+rotation motor can be simulated as type="hinge" axis="0 1 0" 
+
+#  Parameters
+
 rotate:  euler="0 0 90"
 
 for use of parameter is at 
@@ -11,7 +47,8 @@ straight
 2.5cm len 3mm radius 
 
 # gudidewire	
-	https://www.teleflex.com/en/usa/arrowUniversity/vascular/cvc/section9/2.html#:~:text=There%20are%20three%20types%20of%20guidewires%3A%20Solid%20Core,both%20the%20core%20wire%20and%20a%20ribbon%20wire
+
+https://www.teleflex.com/en/usa/arrowUniversity/vascular/cvc/section9/2.html#:~:text=There%20are%20three%20types%20of%20guidewires%3A%20Solid%20Core,both%20the%20core%20wire%20and%20a%20ribbon%20wire
 
 ## types
 	solid core 
