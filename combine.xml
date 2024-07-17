@@ -1,8 +1,13 @@
 <mujoco model="catheter">
-  <include file="guidewire_exte.xml">
-
+	<extension>
+  	<!--use the guidewire must include-->
+    <plugin plugin="mujoco.elasticity.cable"/>
+	</extension>
+  
   <worldbody>
-    <include file="angled-guidewire.xml"/>
+  	<body>
+    	<include file="straight-guidewire.xml"/>
+    </body>
   </worldbody>
 
 </mujoco>
