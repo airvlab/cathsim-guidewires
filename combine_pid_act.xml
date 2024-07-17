@@ -6,15 +6,8 @@
 	</extension>
 	
   <worldbody>
-  	
-  <body name="straight-guidewire" pos="0 0 0" euler="0 0 90">
-  	<geom size="0.1 " pos="0 0 1" rgba="1 0 0 1"/>
-  	<joint name="j3" type="slide" axis="0 1 0" />
-      <composite type="cable" curve="s" size="6.5" offset="0 0 0" initial="none" count="49 1 1">
-      	<joint kind="main" damping=".001" stiffness="0.001" margin="0.02"/>
-      	<geom type="capsule" size=".001" rgba="1 1 1 1" condim="1"/>
-    	</composite> 
-    </body>
+    <include file="angled-guidewire.xml"/>
+    
   </worldbody>
   
   
