@@ -1,0 +1,52 @@
+<mujoco model="guidewire">
+  <compiler angle="degree"></compiler>
+  <include file="scene.xml"></include>
+  <option density="1055" integrator="implicitfast" viscosity="0.004"></option>
+  <visual>
+    <global elevation="-30"></global>
+  </visual>
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable"></plugin>
+    <plugin plugin="mujoco.pid">
+      <instance name="slider-pid">
+        <config key="kp" value="40.0"></config>
+        <config key="ki" value="40"></config>
+        <config key="kd" value="0.01"></config>
+        <config key="slewmax" value="3"></config>
+        <config key="imax" value="1"></config>
+      </instance>
+    </plugin>
+    <plugin plugin="mujoco.pid">
+      <instance name="rotator-pid">
+        <config key="kp" value="40.0"></config>
+        <config key="ki" value="40"></config>
+        <config key="kd" value="0.1"></config>
+        <config key="slewmax" value="1"></config>
+        <config key="imax" value="0.3"></config>
+      </instance>
+    </plugin>
+  </extension>
+  <worldbody>
+    <frame euler="0 0 90" pos="0 -1. 0">
+      <body name="guidewire">
+        <joint axis="1 0 0" damping=".2" limited="true" name="slider" range="-.1 .1" type="slide"></joint>
+        <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
+        <composite count="60" curve="s" initial="none" size="0.6" type="cable">
+          <plugin plugin="mujoco.elasticity.cable">
+            <!--Units are in Pa (SI)-->
+            <config key="twist" value="5e10"></config>
+            <config key="bend" value="5e10"></config>
+            <config key="vmax" value="0.05"></config>
+          </plugin>
+          <joint damping=".015" kind="main"></joint>
+          <joint damping=".015" kind="twist"></joint>
+          <geom condim="1" rgba=".8 .2 .1 1" size=".001" type="capsule"></geom>
+        </composite>
+      </body>
+    </frame>
+  </worldbody>
+  <actuator>
+    <plugin actdim="2" ctrlrange="-.1 .1" instance="slider-pid" joint="slider" plugin="mujoco.pid"></plugin>
+    <plugin actdim="2" instance="rotator-pid" joint="rotator" plugin="mujoco.pid"></plugin>
+  </actuator>
+</mujoco>
