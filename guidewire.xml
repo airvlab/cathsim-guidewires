@@ -26,7 +26,7 @@
     </plugin>
   </extension>
   <worldbody>
-    <frame euler="0 0 90" pos="0 -.6 0">
+    <frame euler="0 0 90" pos="0 -.6 0.002">
       <body name="guidewire">
         <joint axis="1 0 0" damping=".2" limited="true" name="slider" range="-.1 .1" type="slide"></joint>
         <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
