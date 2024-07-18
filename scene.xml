@@ -1,6 +1,7 @@
 <mujoco>
   <compiler meshdir="asset" texturedir="asset"></compiler>
   <statistic meansize=".05"></statistic>
+  <include file="guidewire.xml"></include>
   <visual>
     <rgba haze="0.15 0.25 0.35 1"></rgba>
     <quality shadowsize="4096"></quality>
@@ -15,8 +16,9 @@
     <light castshadow="false" diffuse=".4 .4 .4" dir="0 0 -1" pos="0 0 2.0" specular="0.1 0.1 0.1"></light>
     <light diffuse=".8 .8 .8" dir="0 0 -1" directional="true" pos="0 0 4" specular="0.2 0.2 0.2"></light>
     <!-- <camera name="camera_top" mode="fixed" pos="0 0 3" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera > -->
-    <camera name="top_graphic" pos="0 -0.4 0.7" orthographic="true" fovy="0.7" xyaxes="1 0 0 0 1 0"/>
-    <camera name="side" mode="fixed" pos="0 -1.1 0" orthographic="false" xyaxes="1 0 0 0 0 1"></camera >
+    <camera fovy="0.7" name="top_graphic" orthographic="true" pos="0 -0.4 0.7" xyaxes="1 0 0 0 1 0"></camera>
+    <camera mode="fixed" name="side" orthographic="false" pos="0 -1.1 0" xyaxes="1 0 0 0 0 1"></camera>
     <geom condim="1" material="matplane" name="ground" pos="0 0 -.1" quat="1 0 0 0" size="0 0 1" type="plane"></geom>
+    <geom conaffinity="0" condim="3" contype="0" name="orientation" pos="0 0 0" rgba="0.7 0.5 0.3 0.6" size="0.1 0.001 0.1" type="box"></geom>
   </worldbody>
 </mujoco>
