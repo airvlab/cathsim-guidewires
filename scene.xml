@@ -5,7 +5,6 @@
     <rgba haze="0.15 0.25 0.35 1"></rgba>
     <quality shadowsize="4096"></quality>
     <map fogend="15" fogstart="1" haze="1" shadowscale="0.5" stiffness="700" zfar="40"></map>
-    <global pos="0 .325 .5" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera >
   </visual>
   <asset>
     <texture builtin="gradient" height="512" rgb1="0.3 0.5 0.7" rgb2="0 0 0" type="skybox" width="512"></texture>
@@ -15,8 +14,9 @@
   <worldbody>
     <light castshadow="false" diffuse=".4 .4 .4" dir="0 0 -1" pos="0 0 2.0" specular="0.1 0.1 0.1"></light>
     <light diffuse=".8 .8 .8" dir="0 0 -1" directional="true" pos="0 0 4" specular="0.2 0.2 0.2"></light>
-    <camera name="camera_top" mode="fixed" pos="0 .325 .5" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera >
-    <camera name="camera_side" mode="fixed" pos="0 0 .3" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera >
+    <!-- <camera name="camera_top" mode="fixed" pos="0 0 3" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera > -->
+    <camera name="camera_top" pos="0 -0.4 0.7" orthographic="true" fovy="0.7" xyaxes="1 0 0 0 1 0"/>
+    <camera name="camera_side" mode="fixed" pos="0 -1.1 0" orthographic="false" xyaxes="1 0 0 0 0 1"></camera >
     <geom condim="1" material="matplane" name="ground" pos="0 0 -.1" quat="1 0 0 0" size="0 0 1" type="plane"></geom>
   </worldbody>
 </mujoco>

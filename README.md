@@ -58,6 +58,14 @@ length		.65
 tip length 	.04
 diameter		0.035 inch--0.000889
 
+Nitinol 
+
+Teflon
+
+torch control 1:1
+
+
+
 guidewire model type that will be used
 
 straight
@@ -91,8 +99,8 @@ reshapable
 ### shape types
 
     straight tip
-	J(3mm,2mm)
-	angled
+    J(3mm,2mm)
+    angled
 
 ### tip length
 
@@ -170,4 +178,4 @@ kink resistance
 ## material types:
 
     polyethylene or nylon, non-braided or braided with 1:1 torque
-	the catheter tip is made from a heat-sensitive material.(https://ifu.cookmedical.com/data/IFU_PDF/T_CE_ANGIO88_REV6.PDF)
+    the catheter tip is made from a heat-sensitive material.(https://ifu.cookmedical.com/data/IFU_PDF/T_CE_ANGIO88_REV6.PDF)
