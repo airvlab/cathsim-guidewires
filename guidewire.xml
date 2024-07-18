@@ -1,9 +1,8 @@
 <mujoco model="guidewire">
   <compiler angle="degree"></compiler>
-  <include file="scene.xml"></include>
   <option density="1055" integrator="implicitfast" viscosity="0.004"></option>
   <visual>
-    <global elevation="-30"/>
+    <global elevation="-30"></global>
   </visual>
   <extension>
     <plugin plugin="mujoco.elasticity.cable"></plugin>
