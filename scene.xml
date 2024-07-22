@@ -1,7 +1,7 @@
 <mujoco>
   <compiler meshdir="asset" texturedir="asset"></compiler>
   <statistic meansize=".05"></statistic>
-  <include file="guidewire.xml"></include>
+  <include file="guidewire2.xml"></include>
   <visual>
     <rgba haze="0.15 0.25 0.35 1"></rgba>
     <quality shadowsize="4096"></quality>
