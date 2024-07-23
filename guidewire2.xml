@@ -31,16 +31,11 @@
         <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
         <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.5" type="cable">
           <plugin plugin="mujoco.elasticity.cable">
-            <!-- 1×10^5 to 1×10^8 -->
-            <config key="twist" value="5e6"></config>
-            <!-- 1×10^4 to 1×10^7 -->
-            <config key="bend" value="5e8"></config>
-            <!-- <config key="flat" value="true"></config> -->
+            <config key="bend" value="5e9"></config>
             <config key="vmax" value="0.0004"></config>
             <config key="flat" value="true"></config>
           </plugin>
           <joint damping=".001" kind="main"></joint>
-          <joint damping=".001" kind="twist"></joint>
           <geom condim="1" rgba=".8 .2 .1 1" size=".00089" type="capsule"></geom>
         </composite>
       </body>
