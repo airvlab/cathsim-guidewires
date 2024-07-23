@@ -1,4 +1,8 @@
 <mujoco>
+  <visual>
+    <global elevation="-30"></global>
+  </visual>
+  <option density="1055" integrator="implicitfast" viscosity="0.004"></option>
   <compiler meshdir="asset" texturedir="asset"></compiler>
   <statistic meansize=".05"></statistic>
   <include file="guidewire2.xml"></include>

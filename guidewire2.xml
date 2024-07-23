@@ -1,6 +1,5 @@
 <mujoco model="guidewire">
   <compiler angle="degree"></compiler>
-  <option density="1055" integrator="implicitfast" viscosity="0.004"></option>
   <visual>
     <global elevation="-30"></global>
   </visual>
@@ -26,38 +25,40 @@
     </plugin>
   </extension>
   <worldbody>
-    <frame euler="0 0 90" pos="0 -.6 0.002">
+    <frame euler="0 0 90" pos="0 -.5 0.002">
       <body name="guidewire">
         <joint axis="1 0 0" damping=".2" limited="true" name="slider" range="-.1 .1" type="slide"></joint>
         <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
         <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.5" type="cable">
           <plugin plugin="mujoco.elasticity.cable">
-            <config key="twist" value="5e10"></config>
-            <config key="bend" value="5e10"></config>
-            <config key="vmax" value="0.05"></config>
+            <!-- 1×10^5 to 1×10^8 -->
+            <config key="twist" value="5e6"></config>
+            <!-- 1×10^4 to 1×10^7 -->
+            <config key="bend" value="5e8"></config>
+            <!-- <config key="flat" value="true"></config> -->
+            <config key="vmax" value="0.0004"></config>
+            <config key="flat" value="true"></config>
           </plugin>
-          <joint damping=".015" kind="main"></joint>
-          <joint damping=".015" kind="twist"></joint>
-          <geom condim="1" rgba=".8 .2 .1 1" size=".001" type="capsule"></geom>
+          <joint damping=".001" kind="main"></joint>
+          <joint damping=".001" kind="twist"></joint>
+          <geom condim="1" rgba=".8 .2 .1 1" size=".00089" type="capsule"></geom>
         </composite>
       </body>
-      <body name="guidewire_tip" pos="0.5 0 0">
-        <composite count="5" curve="s" initial="none" prefix="guidewire_tip" size="0.03" type="cable">
+    </frame>
+    <frame euler="0 0 0" pos="0.06 -.5 0.002">
+      <body name="tip">
+        <composite curve="s" initial="none" prefix="tip" size="0.03" type="cable" vertex=" 0.000000 -0.000000 0.000000 0.000009 0.005408 0.000000 0.000014 0.009554 0.000000 0.000015 0.012627 0.000000 0.000013 0.014815 0.000000 0.000010 0.016310 0.000000 0.000005 0.017300 0.000000 0.000001 0.017974 0.000000 -0.000002 0.018523 0.000000 -0.000002 0.019135 0.000000 0.000000 0.020000 0.000000 -0.000115 0.021978 0.000000 -0.000466 0.023642 0.000000 -0.001040 0.025027 0.000000 -0.001820 0.026171 0.000000 -0.002792 0.027109 0.000000 -0.003940 0.027879 0.000000 -0.005251 0.028517 0.000000 -0.006707 0.029058 0.000000 -0.008295 0.029541 0.000000 -0.010000 0.030000 0.000000 ">
           <plugin plugin="mujoco.elasticity.cable">
-            <config key="twist" value="5e10"></config>
-            <config key="bend" value="5e10"></config>
-            <config key="vmax" value="0.05"></config>
+            <!-- 1×10^4 to 1×10^7 -->
+            <config key="bend" value="5e7"></config>
+            <config key="vmax" value="0.0004"></config>
           </plugin>
-          <joint damping=".015" kind="main"></joint>
-          <joint damping=".015" kind="twist"></joint>
-          <geom condim="1" rgba=".8 .2 .1 1" size=".001" type="capsule"></geom>
+          <geom condim="1" rgba=".8 .2 .1 1" size=".00089" type="capsule"></geom>
+          <joint damping=".001" kind="main"></joint>
         </composite>
       </body>
     </frame>
   </worldbody>
-  <contact>
-    <exclude body1="guidewireB_last" body2="guidewire_tipB_first" sol ></exclude>
-  </contact>
   <actuator>
     <plugin actdim="2" ctrlrange="-.1 .1" instance="slider-pid" joint="slider" plugin="mujoco.pid"></plugin>
     <plugin actdim="2" instance="rotator-pid" joint="rotator" plugin="mujoco.pid"></plugin>
