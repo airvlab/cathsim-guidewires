@@ -1,26 +1,20 @@
 <mujoco model="guidewire">
-  <compiler angle="degree"></compiler>
-  <visual>
-    <global elevation="-30"></global>
-  </visual>
   <extension>
     <plugin plugin="mujoco.elasticity.cable"></plugin>
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
-        <config key="kp" value="40.0"></config>
-        <config key="ki" value="40"></config>
-        <config key="kd" value="0.01"></config>
-        <config key="slewmax" value="3"></config>
-        <config key="imax" value="1"></config>
-      </instance>
-    </plugin>
-    <plugin plugin="mujoco.pid">
-      <instance name="rotator-pid">
-        <config key="kp" value="40.0"></config>
-        <config key="ki" value="40"></config>
+        <config key="kp" value="10.0"></config>
+        <config key="ki" value="10"></config>
         <config key="kd" value="0.1"></config>
-        <config key="slewmax" value="1"></config>
-        <config key="imax" value="0.3"></config>
+        <config key="imax" value="1"></config>
+        <config key="slewmax" value="3"></config>
+      </instance>
+      <instance name="rotator-pid">
+        <config key="kp" value="1"></config>
+        <config key="ki" value="1"></config>
+        <config key="kd" value="0.1"></config>
+        <config key="imax" value="5"></config>
+        <config key="slewmax" value="2"></config>
       </instance>
     </plugin>
   </extension>
@@ -43,6 +37,6 @@
   </worldbody>
   <actuator>
     <plugin actdim="2" ctrlrange="-.1 .1" instance="slider-pid" joint="slider" plugin="mujoco.pid"></plugin>
-    <plugin actdim="2" instance="rotator-pid" joint="rotator" plugin="mujoco.pid"></plugin>
+    <plugin actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid" joint="rotator" plugin="mujoco.pid"></plugin>
   </actuator>
 </mujoco>
