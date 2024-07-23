@@ -464,7 +464,7 @@
     <exclude body1="tipB_18" body2="tipB_last"></exclude>
   </contact>
   <actuator>
-    <plugin actdim="2" ctrlrange="-0.1 0.1" instance="slider-pid" joint="slider"></plugin>
+    <plugin actdim="2" ctrlrange="0 0.5" instance="slider-pid" joint="slider"></plugin>
     <plugin actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid" joint="rotator"></plugin>
   </actuator>
 </mujoco>
