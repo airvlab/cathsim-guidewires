@@ -1,8 +1,4 @@
 <mujoco model="tip">
-  <compiler angle="degree"></compiler>
-  <visual>
-    <global elevation="-30"></global>
-  </visual>
   <extension>
     <plugin plugin="mujoco.elasticity.cable"></plugin>
   </extension>
