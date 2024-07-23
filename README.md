@@ -1,3 +1,4 @@
+
 # 1. How to use
 
 There are XXX_guidewire.xml files
@@ -12,18 +13,15 @@ combine controller and guidewire.
 
 to use it : python -m mujoco.viewer -mjcf combine_pid_act.xml
 
-
-
 We should have 2 Degree of freedom. we need two controller to control the linear and rotate.
 
 That's we need two joint to control the move, and each one have a controller
 
 ## 2.1 Joint parameter
 
- linear motor can be simulated as type="slide" axis="0 1 0" 
+ linear motor can be simulated as type="slide" axis="0 1 0"
 
 rotation motor can be simulated as type="hinge" axis="0 1 0"
-
 
 ## 2.2 Pid controller parameter:
 
@@ -43,7 +41,7 @@ to get the great parameter, need real train.
 
 max move length
 
-linear:  0.001* 
+linear:  0.001*
 
 rotate: 1-360°
 
@@ -54,17 +52,19 @@ rotate: 1-360°
 Rotate:  the parent body to rotate the guidewire:  euler="0 0 90"
 
 The parameter used is:
-length		.65
+length		.5
 tip length 	.04
 diameter		0.035 inch--0.000889
 
-Nitinol 
+Nitinol-----28.0 GPa 2.8e10 https://www.matweb.com/search/DataSheet.aspx?MatGUID=44afc7d3c6eb4829bc2df27884fd2d6c
 
-Teflon
+Teflon-- Young's module ---5e8- 1e9
+
+https://designerdata.nl/materials/plastics/thermo-plastics/polytetrafluoroethylene-(teflon)
+
+https://www.matweb.com/search/datasheet_print.aspx?matguid=4d14eac958e5401a8fd152e1261b6843
 
 torch control 1:1
-
-
 
 guidewire model type that will be used
 
@@ -72,12 +72,6 @@ straight
 3mm J
 135 angled
 2.5cm len 3mm radius
-
-
-
-[Haptic Interface With Force and Torque Feedback for Robot-Assisted Endovascular Catheterization | IEEE Journals &amp; Magazine | IEEE Xplore](https://ieeexplore.ieee.org/document/10179013)
-
-[[25]]( L. Jones, "Kinesthetic sensing" in Human and Machine Haptics, Cambridge, MA, USA:MIT Press, 2000.), [[26]](L. Jandura et al., "Experiments on human performance in torque discrimination and control" in Time-Varying Systems and Control, New York, NY, USA:ASME, vol. 1, pp. 369-375, 1994.) indicate that human's force resolution is 0.06 N, and the just noticeable difference (JND) for torque is 12.7% at the reference of 60 mN•m. The bandwidth for controlling forces has been estimated to be approximately 2 Hz for forearms, while the bandwidth for force control of fingers is determined to be less than 6 Hz [[25]]( L. Jones, "Kinesthetic sensing" in Human and Machine Haptics, Cambridge, MA, USA:MIT Press, 2000.). The operating force and torque during endovascular catheterization procedures generally will not exceed 3.2 N and 10 mN•m [[27]](H. Rafii-Tari et al., "Assessment of navigation cues with proximal force sensing during endovascular catheterization", Med. Image. Comput. Comput. Assist. Interv., vol. 15, pp. 560-567, Sep. 2012.), [[28]](X. Bao et al., "Multilevel operation strategy of a vascular interventional robot system for surgical safety in teleoperation", IEEE Trans. Robot., vol. 38, no. 4, pp. 2238-2250, Aug. 2022.). [[33]](T. L. Brooks, "Telerobotic response requirements", Proc. IEEE Int. Conf. Syst. Man Cybern., pp. 113-120, 1990.) point out that, in a master-slave system, a low bandwidth (5–10 Hz) could be used from the hand controller to the slave, and a higher bandwidth (20–320 Hz) could be used from the slave to the hand controller.
 
 ## 3.2 Guide wire Infor resource
 
@@ -133,9 +127,7 @@ nickel+Titanium
 
 ### Tip:
 
-Teflon
-
-polytetrafluoroethylene (PTFE)
+Teflon----polytetrafluoroethylene (PTFE)
 
 hydrophilic
 
@@ -163,11 +155,6 @@ most used 0.010 0.014 0.018 0.035
 kink resistance
 
 ## 3.10friction
-
-
-
-
-
 
 # catheter
 
