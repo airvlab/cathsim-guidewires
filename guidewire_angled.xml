@@ -45,11 +45,6 @@
   </extension>
 
   <custom>
-    <text data="rope_guidewire" name="composite_guidewire"></text>
-    <text data="rope_tip" name="composite_tip"></text>
-  </custom>
-
-  <custom>
     <text name="composite_guidewire" data="rope_guidewire" />
     <text name="composite_tip" data="rope_tip" />
   </custom>
