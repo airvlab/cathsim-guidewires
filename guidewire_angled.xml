@@ -53,7 +53,7 @@
     <frame>
       <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002"
         quat="0 -0.707107 -0.70710 0">
-        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.1 0.1"
+        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="0 0.2"
           damping="0.2" />
         <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="-12.56 12.56"
           damping="0.2" />
@@ -801,7 +801,7 @@
   </contact>
 
   <actuator>
-    <plugin name="slider" actdim="2" ctrlrange="0 0.5" instance="slider-pid" joint="slider"></plugin>
+    <plugin name="slider" actdim="1" ctrlrange="0 0.15" instance="slider-pid" joint="slider"></plugin>
     <!-- <position kp="1" kv="0.1" inheritrange="0.9" joint="rotator" /> -->
     <plugin name="rotator" actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid"
       joint="rotator"></plugin>
