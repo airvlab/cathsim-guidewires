@@ -18,17 +18,17 @@
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
         <config key="kp" value="0.1"></config>
-        <config key="ki" value="0"></config>
-        <config key="kd" value="0.1"></config>
-        <config key="imax" value="0.001"></config>
-        <config key="slewmax" value="0.2"></config>
+        <!-- <config key="ki" value="0"></config> -->
+        <!-- <config key="kd" value="0.1"></config> -->
+        <config key="imax" value="2"></config>
+        <config key="slewmax" value="50"></config>
       </instance>
       <instance name="rotator-pid">
-        <config key="kp" value="1"></config>
-        <config key="ki" value="0"></config>
-        <config key="kd" value="0.1"></config>
-        <config key="imax" value="0.1"></config>
-        <config key="slewmax" value="1.3"></config>
+        <config key="kp" value="0.05"></config>
+        <!-- <config key="ki" value="0"></config> -->
+        <!-- <config key="kd" value="0.02"></config> -->
+        <!-- <config key="imax" value="1"></config> -->
+        <config key="slewmax" value="15"></config>
       </instance>
     </plugin>
     <plugin plugin="mujoco.elasticity.cable">
@@ -55,8 +55,8 @@
         quat="0 -0.707107 -0.70710 0">
         <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="0 0.2"
           damping="0.2" />
-        <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="-12.56 12.56"
-          damping="0.2" />
+        <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="-200 200"
+          damping="0.1" />
         <body name="guidewireB_first">
           <geom name="guidewireG0" size="0.000445 0.00431034" pos="0.00431034 0 0"
             quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
@@ -801,9 +801,8 @@
   </contact>
 
   <actuator>
-    <plugin name="slider" actdim="1" ctrlrange="0 0.15" instance="slider-pid" joint="slider"></plugin>
-    <!-- <position kp="1" kv="0.1" inheritrange="0.9" joint="rotator" /> -->
-    <plugin name="rotator" actdim="1" ctrlrange="-12.56 12.56" instance="rotator-pid"
-      joint="rotator"></plugin>
+    <plugin name="slider" actdim="1" ctrlrange="0 0.15" instance="slider-pid" joint="slider" />
+    <plugin name="rotator" actdim="1" ctrlrange="-200 200" instance="rotator-pid"
+      joint="rotator" />
   </actuator>
 </mujoco>
