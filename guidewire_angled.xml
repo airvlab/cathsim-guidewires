@@ -18,14 +18,14 @@
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
         <config key="kp" value="0.1"></config>
-        <config key="ki" value="0.1"></config>
+        <config key="ki" value="0"></config>
         <config key="kd" value="0.1"></config>
         <config key="imax" value="0.001"></config>
         <config key="slewmax" value="0.2"></config>
       </instance>
       <instance name="rotator-pid">
         <config key="kp" value="1"></config>
-        <config key="ki" value="0.1"></config>
+        <config key="ki" value="0"></config>
         <config key="kd" value="0.1"></config>
         <config key="imax" value="0.1"></config>
         <config key="slewmax" value="1.3"></config>
@@ -803,7 +803,7 @@
   <actuator>
     <plugin name="slider" actdim="1" ctrlrange="0 0.15" instance="slider-pid" joint="slider"></plugin>
     <!-- <position kp="1" kv="0.1" inheritrange="0.9" joint="rotator" /> -->
-    <plugin name="rotator" actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid"
+    <plugin name="rotator" actdim="1" ctrlrange="-12.56 12.56" instance="rotator-pid"
       joint="rotator"></plugin>
   </actuator>
 </mujoco>
