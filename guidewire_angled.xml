@@ -17,11 +17,11 @@
   <extension>
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
-        <config key="kp" value="0.1"></config>
+        <config key="kp" value="0.05"></config>
         <!-- <config key="ki" value="0"></config> -->
         <!-- <config key="kd" value="0.1"></config> -->
         <config key="imax" value="2"></config>
-        <config key="slewmax" value="50"></config>
+        <config key="slewmax" value="15"></config>
       </instance>
       <instance name="rotator-pid">
         <config key="kp" value="0.05"></config>
