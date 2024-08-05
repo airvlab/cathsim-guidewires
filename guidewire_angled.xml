@@ -18,17 +18,12 @@
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
         <config key="kp" value="0.05"></config>
-        <!-- <config key="ki" value="0"></config> -->
-        <!-- <config key="kd" value="0.1"></config> -->
-        <config key="imax" value="2"></config>
-        <config key="slewmax" value="15"></config>
+        <config key="slewmax" value="4"></config>
       </instance>
       <instance name="rotator-pid">
-        <config key="kp" value="0.05"></config>
-        <!-- <config key="ki" value="0"></config> -->
-        <!-- <config key="kd" value="0.02"></config> -->
-        <!-- <config key="imax" value="1"></config> -->
-        <config key="slewmax" value="15"></config>
+        <config key="kp" value="0.02"></config>
+        <config key="imax" value="1"></config>
+        <config key="slewmax" value="3"></config>
       </instance>
     </plugin>
     <plugin plugin="mujoco.elasticity.cable">
@@ -53,9 +48,10 @@
     <frame>
       <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002"
         quat="0 -0.707107 -0.70710 0">
-        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="0 0.2"
-          damping="0.2" />
-        <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="-200 200"
+        <joint armature="0.01" name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true"
+          range="0 0.2" damping="0.2" />
+        <joint armature="0.01" name="rotator" pos="0 0 0" axis="1 0 0" limited="false"
+          range="-200 200"
           damping="0.1" />
         <body name="guidewireB_first">
           <geom name="guidewireG0" size="0.000445 0.00431034" pos="0.00431034 0 0"
