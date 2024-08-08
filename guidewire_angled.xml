@@ -1,18 +1,14 @@
 <mujoco model="guidewire">
   <compiler angle="radian" />
 
-  <visual>
-    <global elevation="-30" />
-  </visual>
-
   <default>
     <default class="guidewire">
-      <joint pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.001" />
+      <joint pos="0 0 0" type="ball" group="3" damping="0.001" />
       <geom condim="1" rgba="0.8 0.2 0.1 1" />
     </default>
     <default class="tip">
       <geom condim="1" rgba="0.8 0.2 0.1 1" />
-      <joint pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.001" />
+      <joint pos="0 0 0" type="ball" group="3" damping="0.001" />
     </default>
   </default>
 
