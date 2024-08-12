@@ -1,0 +1,559 @@
+diff --git a/guidewire_angled.xml b/guidewire_angled.xml
+index 6fc7416..bfe6c5a 100644
+--- a/guidewire_angled.xml
++++ b/guidewire_angled.xml
+@@ -1,16 +1,14 @@
+ <mujoco model="guidewire">
+   <compiler angle="radian" />
+ 
+-  <visual>
+-    <global elevation="-30" />
+-  </visual>
+-
+   <default>
+     <default class="guidewire">
++      <joint pos="0 0 0" type="ball" group="3" damping="0.001" />
+       <geom condim="1" rgba="0.8 0.2 0.1 1" />
+     </default>
+-    <default class="tips">
++    <default class="tip">
+       <geom condim="1" rgba="0.8 0.2 0.1 1" />
++      <joint pos="0 0 0" type="ball" group="3" damping="0.001" />
+     </default>
+   </default>
+ 
+@@ -48,154 +46,130 @@
+     <frame>
+       <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002"
+         quat="0 -0.707107 -0.70710 0">
+-        <joint armature="0.01" name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true"
+-          range="0 0.2" damping="0.2" />
+-        <joint armature="0.01" name="rotator" pos="0 0 0" axis="1 0 0" limited="false"
+-          range="-200 200"
+-          damping="0.1" />
++        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.1 0.1"
++          damping="0.2" />
++        <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="100 100" damping="0.2" />
+         <body name="guidewireB_first">
+           <geom name="guidewireG0" size="0.000445 0.00431034" pos="0.00431034 0 0"
+             quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+           <site name="guidewireS_first" pos="0 0 0" group="3" />
+           <plugin instance="compositeguidewire" />
+           <body name="guidewireB_1" pos="0.00862069 0 0">
+-            <joint name="guidewireJ_1" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false"
+-              damping="0.001" />
++            <joint name="guidewireJ_1" class="guidewire" />
+             <geom name="guidewireG1" size="0.000445 0.00431034" pos="0.00431034 0 0"
+               quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+             <plugin instance="compositeguidewire" />
+             <body name="guidewireB_2" pos="0.00862069 0 0">
+-              <joint name="guidewireJ_2" pos="0 0 0" type="ball" group="3"
+-                actuatorfrclimited="false" damping="0.001" />
++              <joint name="guidewireJ_2" class="guidewire" />
+               <geom name="guidewireG2" size="0.000445 0.00431035" pos="0.00431035 0 0"
+                 quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+               <plugin instance="compositeguidewire" />
+               <body name="guidewireB_3" pos="0.00862069 0 0">
+-                <joint name="guidewireJ_3" pos="0 0 0" type="ball" group="3"
+-                  actuatorfrclimited="false" damping="0.001" />
++                <joint name="guidewireJ_3" class="guidewire" />
+                 <geom name="guidewireG3" size="0.000445 0.00431034" pos="0.00431034 0 0"
+                   quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                 <plugin instance="compositeguidewire" />
+                 <body name="guidewireB_4" pos="0.00862069 0 0">
+-                  <joint name="guidewireJ_4" pos="0 0 0" type="ball" group="3"
+-                    actuatorfrclimited="false" damping="0.001" />
++                  <joint name="guidewireJ_4" class="guidewire" />
+                   <geom name="guidewireG4" size="0.000445 0.00431035" pos="0.00431035 0 0"
+                     quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                   <plugin instance="compositeguidewire" />
+                   <body name="guidewireB_5" pos="0.00862069 0 0">
+-                    <joint name="guidewireJ_5" pos="0 0 0" type="ball" group="3"
+-                      actuatorfrclimited="false" damping="0.001" />
++                    <joint name="guidewireJ_5" class="guidewire" />
+                     <geom name="guidewireG5" size="0.000445 0.00431035" pos="0.00431035 0 0"
+                       quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                     <plugin instance="compositeguidewire" />
+                     <body name="guidewireB_6" pos="0.00862069 0 0">
+-                      <joint name="guidewireJ_6" pos="0 0 0" type="ball" group="3"
+-                        actuatorfrclimited="false" damping="0.001" />
++                      <joint name="guidewireJ_6" class="guidewire" />
+                       <geom name="guidewireG6" size="0.000445 0.00431034" pos="0.00431034 0 0"
+                         quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                       <plugin instance="compositeguidewire" />
+                       <body name="guidewireB_7" pos="0.00862069 0 0">
+-                        <joint name="guidewireJ_7" pos="0 0 0" type="ball" group="3"
+-                          actuatorfrclimited="false" damping="0.001" />
++                        <joint name="guidewireJ_7" class="guidewire" />
+                         <geom name="guidewireG7" size="0.000445 0.00431035" pos="0.00431035 0 0"
+                           quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                         <plugin instance="compositeguidewire" />
+                         <body name="guidewireB_8" pos="0.00862069 0 0">
+-                          <joint name="guidewireJ_8" pos="0 0 0" type="ball" group="3"
+-                            actuatorfrclimited="false" damping="0.001" />
++                          <joint name="guidewireJ_8" class="guidewire" />
+                           <geom name="guidewireG8" size="0.000445 0.00431034" pos="0.00431034 0 0"
+                             quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                           <plugin instance="compositeguidewire" />
+                           <body name="guidewireB_9" pos="0.00862069 0 0">
+-                            <joint name="guidewireJ_9" pos="0 0 0" type="ball" group="3"
+-                              actuatorfrclimited="false" damping="0.001" />
++                            <joint name="guidewireJ_9" class="guidewire" />
+                             <geom name="guidewireG9" size="0.000445 0.00431035" pos="0.00431035 0 0"
+                               quat="0.707107 0 -0.707107 0" type="capsule" condim="3" rgba="0 0 1 1" />
+                             <plugin instance="compositeguidewire" />
+                             <body name="guidewireB_10" pos="0.00862069 0 0">
+-                              <joint name="guidewireJ_10" pos="0 0 0" type="ball" group="3"
+-                                actuatorfrclimited="false" damping="0.001" />
++                              <joint name="guidewireJ_10" class="guidewire" />
+                               <geom name="guidewireG10" size="0.000445 0.00431034"
+                                 pos="0.00431034 0 0" quat="0.707107 0 -0.707107 0" type="capsule"
+                                 condim="3" rgba="0 0 1 1" />
+                               <plugin instance="compositeguidewire" />
+                               <body name="guidewireB_11" pos="0.00862069 0 0">
+-                                <joint name="guidewireJ_11" pos="0 0 0" type="ball" group="3"
+-                                  actuatorfrclimited="false" damping="0.001" />
++                                <joint name="guidewireJ_11" class="guidewire" />
+                                 <geom name="guidewireG11" size="0.000445 0.00431035"
+                                   pos="0.00431035 0 0" quat="0.707107 0 -0.707107 0" type="capsule"
+                                   condim="3" rgba="0 0 1 1" />
+                                 <plugin instance="compositeguidewire" />
+                                 <body name="guidewireB_12" pos="0.00862069 0 0">
+-                                  <joint name="guidewireJ_12" pos="0 0 0" type="ball" group="3"
+-                                    actuatorfrclimited="false" damping="0.001" />
++                                  <joint name="guidewireJ_12" class="guidewire" />
+                                   <geom name="guidewireG12" size="0.000445 0.00431034"
+                                     pos="0.00431034 0 0" quat="0.707107 0 -0.707107 0"
+                                     type="capsule" condim="3" rgba="0 0 1 1" />
+                                   <plugin instance="compositeguidewire" />
+                                   <body name="guidewireB_13" pos="0.00862069 0 0">
+-                                    <joint name="guidewireJ_13" pos="0 0 0" type="ball" group="3"
+-                                      actuatorfrclimited="false" damping="0.001" />
++                                    <joint name="guidewireJ_13" class="guidewire" />
+                                     <geom name="guidewireG13" size="0.000445 0.00431034"
+                                       pos="0.00431034 0 0" quat="0.707107 0 -0.707107 0"
+                                       type="capsule" condim="3" rgba="0 0 1 1" />
+                                     <plugin instance="compositeguidewire" />
+                                     <body name="guidewireB_14" pos="0.00862069 0 0">
+-                                      <joint name="guidewireJ_14" pos="0 0 0" type="ball" group="3"
+-                                        actuatorfrclimited="false" damping="0.001" />
++                                      <joint name="guidewireJ_14" class="guidewire" />
+                                       <geom name="guidewireG14" size="0.000445 0.00431034"
+                                         pos="0.00431034 0 0" quat="0.707107 0 -0.707107 0"
+                                         type="capsule" condim="3" rgba="0 0 1 1" />
+                                       <plugin instance="compositeguidewire" />
+                                       <body name="guidewireB_15" pos="0.00862069 0 0">
+-                                        <joint name="guidewireJ_15" pos="0 0 0" type="ball"
+-                                          group="3" actuatorfrclimited="false" damping="0.001" />
++                                        <joint name="guidewireJ_15" class="guidewire" />
+                                         <geom name="guidewireG15" size="0.000445 0.00431035"
+                                           pos="0.00431035 0 0" quat="0.707107 0 -0.707107 0"
+                                           type="capsule" condim="3" rgba="0 0 1 1" />
+                                         <plugin instance="compositeguidewire" />
+                                         <body name="guidewireB_16" pos="0.00862069 0 0">
+-                                          <joint name="guidewireJ_16" pos="0 0 0" type="ball"
+-                                            group="3" actuatorfrclimited="false" damping="0.001" />
++                                          <joint name="guidewireJ_16" class="guidewire" />
+                                           <geom name="guidewireG16" size="0.000445 0.00431035"
+                                             pos="0.00431035 0 0" quat="0.707107 0 -0.707107 0"
+                                             type="capsule" condim="3" rgba="0 0 1 1" />
+                                           <plugin instance="compositeguidewire" />
+                                           <body name="guidewireB_17" pos="0.00862069 0 0">
+-                                            <joint name="guidewireJ_17" pos="0 0 0" type="ball"
+-                                              group="3" actuatorfrclimited="false" damping="0.001" />
++                                            <joint name="guidewireJ_17" class="guidewire" />
+                                             <geom name="guidewireG17" size="0.000445 0.00431034"
+                                               pos="0.00431034 0 0" quat="0.707107 0 -0.707107 0"
+                                               type="capsule" condim="3" rgba="0 0 1 1" />
+                                             <plugin instance="compositeguidewire" />
+                                             <body name="guidewireB_18" pos="0.00862068 0 0">
+-                                              <joint name="guidewireJ_18" pos="0 0 0" type="ball"
+-                                                group="3" actuatorfrclimited="false" damping="0.001" />
++                                              <joint name="guidewireJ_18" class="guidewire" />
+                                               <geom name="guidewireG18" size="0.000445 0.00431035"
+                                                 pos="0.00431035 0 0" quat="0.707107 0 -0.707107 0"
+                                                 type="capsule" condim="3" rgba="0 0 1 1" />
+                                               <plugin instance="compositeguidewire" />
+                                               <body name="guidewireB_19" pos="0.00862069 0 0">
+-                                                <joint name="guidewireJ_19" pos="0 0 0" type="ball"
+-                                                  group="3" actuatorfrclimited="false"
+-                                                  damping="0.001" />
++                                                <joint name="guidewireJ_19" class="guidewire" />
+                                                 <geom name="guidewireG19" size="0.000445 0.00431035"
+                                                   pos="0.00431035 0 0" quat="0.707107 0 -0.707107 0"
+                                                   type="capsule" condim="3" rgba="0 0 1 1" />
+                                                 <plugin instance="compositeguidewire" />
+                                                 <body name="guidewireB_20" pos="0.00862069 0 0">
+-                                                  <joint name="guidewireJ_20" pos="0 0 0"
+-                                                    type="ball" group="3" actuatorfrclimited="false"
+-                                                    damping="0.001" />
++                                                  <joint name="guidewireJ_20"
++                                                    class="guidewire" />
+                                                   <geom name="guidewireG20"
+                                                     size="0.000445 0.00431034" pos="0.00431034 0 0"
+                                                     quat="0.707107 0 -0.707107 0" type="capsule"
+                                                     condim="3" rgba="0 0 1 1" />
+                                                   <plugin instance="compositeguidewire" />
+                                                   <body name="guidewireB_21" pos="0.00862068 0 0">
+-                                                    <joint name="guidewireJ_21" pos="0 0 0"
+-                                                      type="ball" group="3"
+-                                                      actuatorfrclimited="false" damping="0.001" />
++                                                    <joint name="guidewireJ_21"
++                                                      class="guidewire" />
+                                                     <geom name="guidewireG21"
+                                                       size="0.000445 0.00431035"
+                                                       pos="0.00431035 0 0"
+@@ -203,9 +177,8 @@
+                                                       condim="3" rgba="0 0 1 1" />
+                                                     <plugin instance="compositeguidewire" />
+                                                     <body name="guidewireB_22" pos="0.00862069 0 0">
+-                                                      <joint name="guidewireJ_22" pos="0 0 0"
+-                                                        type="ball" group="3"
+-                                                        actuatorfrclimited="false" damping="0.001" />
++                                                      <joint name="guidewireJ_22"
++                                                        class="guidewire" />
+                                                       <geom name="guidewireG22"
+                                                         size="0.000445 0.00431035"
+                                                         pos="0.00431035 0 0"
+@@ -214,9 +187,8 @@
+                                                       <plugin instance="compositeguidewire" />
+                                                       <body name="guidewireB_23"
+                                                         pos="0.00862069 0 0">
+-                                                        <joint name="guidewireJ_23" pos="0 0 0"
+-                                                          type="ball" group="3"
+-                                                          actuatorfrclimited="false" damping="0.001" />
++                                                        <joint name="guidewireJ_23"
++                                                          class="guidewire" />
+                                                         <geom name="guidewireG23"
+                                                           size="0.000445 0.00431035"
+                                                           pos="0.00431035 0 0"
+@@ -225,10 +197,8 @@
+                                                         <plugin instance="compositeguidewire" />
+                                                         <body name="guidewireB_24"
+                                                           pos="0.00862069 0 0">
+-                                                          <joint name="guidewireJ_24" pos="0 0 0"
+-                                                            type="ball" group="3"
+-                                                            actuatorfrclimited="false"
+-                                                            damping="0.001" />
++                                                          <joint name="guidewireJ_24"
++                                                            class="guidewire" />
+                                                           <geom name="guidewireG24"
+                                                             size="0.000445 0.00431034"
+                                                             pos="0.00431034 0 0"
+@@ -237,10 +207,8 @@
+                                                           <plugin instance="compositeguidewire" />
+                                                           <body name="guidewireB_25"
+                                                             pos="0.00862068 0 0">
+-                                                            <joint name="guidewireJ_25" pos="0 0 0"
+-                                                              type="ball" group="3"
+-                                                              actuatorfrclimited="false"
+-                                                              damping="0.001" />
++                                                            <joint name="guidewireJ_25"
++                                                              class="guidewire" />
+                                                             <geom name="guidewireG25"
+                                                               size="0.000445 0.00431035"
+                                                               pos="0.00431035 0 0"
+@@ -251,9 +219,7 @@
+                                                             <body name="guidewireB_26"
+                                                               pos="0.00862069 0 0">
+                                                               <joint name="guidewireJ_26"
+-                                                                pos="0 0 0" type="ball" group="3"
+-                                                                actuatorfrclimited="false"
+-                                                                damping="0.001" />
++                                                                class="guidewire" />
+                                                               <geom name="guidewireG26"
+                                                                 size="0.000445 0.00431035"
+                                                                 pos="0.00431035 0 0"
+@@ -264,9 +230,7 @@
+                                                               <body name="guidewireB_27"
+                                                                 pos="0.00862069 0 0">
+                                                                 <joint name="guidewireJ_27"
+-                                                                  pos="0 0 0" type="ball" group="3"
+-                                                                  actuatorfrclimited="false"
+-                                                                  damping="0.001" />
++                                                                  class="guidewire" />
+                                                                 <geom name="guidewireG27"
+                                                                   size="0.000445 0.00431034"
+                                                                   pos="0.00431034 0 0"
+@@ -278,10 +242,7 @@
+                                                                 <body name="guidewireB_last"
+                                                                   pos="0.00862068 0 0">
+                                                                   <joint name="guidewireJ_last"
+-                                                                    pos="0 0 0" type="ball"
+-                                                                    group="3"
+-                                                                    actuatorfrclimited="false"
+-                                                                    damping="0.001" />
++                                                                    class="guidewire" />
+                                                                   <geom name="guidewireG28"
+                                                                     size="0.000445 0.00431035"
+                                                                     pos="0.00431035 0 0"
+@@ -292,7 +253,7 @@
+                                                                     pos="0.00862069 0 0" group="3" />
+                                                                   <plugin
+                                                                     instance="compositeguidewire" />
+-                                                                  <body name="tip" childclass="tips"
++                                                                  <body name="tip" childclass="tip"
+                                                                     pos="0.00862069 0 0">
+                                                                     <body name="tipB_first"
+                                                                       quat="-0.707107 0.707107 0 0">
+@@ -310,10 +271,7 @@
+                                                                         pos="0.00540801 0 0"
+                                                                         quat="1 0 0 0.000229109">
+                                                                         <joint name="tipJ_1"
+-                                                                          pos="0 0 0" type="ball"
+-                                                                          group="3"
+-                                                                          actuatorfrclimited="false"
+-                                                                          damping="0.001" />
++                                                                          class="tip" />
+                                                                         <geom name="tipG1"
+                                                                           size="0.000445 0.002073"
+                                                                           pos="0.002073 0 0"
+@@ -326,10 +284,7 @@
+                                                                           pos="0.004146 0 0"
+                                                                           quat="1 0 0 0.000440283">
+                                                                           <joint name="tipJ_2"
+-                                                                            pos="0 0 0" type="ball"
+-                                                                            group="3"
+-                                                                            actuatorfrclimited="false"
+-                                                                            damping="0.001" />
++                                                                            class="tip" />
+                                                                           <geom name="tipG2"
+                                                                             size="0.000445 0.0015365"
+                                                                             pos="0.0015365 0 0"
+@@ -343,10 +298,7 @@
+                                                                             pos="0.003073 0 0"
+                                                                             quat="1 0 0 0.000619746">
+                                                                             <joint name="tipJ_3"
+-                                                                              pos="0 0 0"
+-                                                                              type="ball" group="3"
+-                                                                              actuatorfrclimited="false"
+-                                                                              damping="0.001" />
++                                                                              class="tip" />
+                                                                             <geom name="tipG3"
+                                                                               size="0.000445 0.001094"
+                                                                               pos="0.001094 0 0"
+@@ -360,11 +312,7 @@
+                                                                               pos="0.002188 0 0"
+                                                                               quat="1 0 0 0.000546304">
+                                                                               <joint name="tipJ_4"
+-                                                                                pos="0 0 0"
+-                                                                                type="ball"
+-                                                                                group="3"
+-                                                                                actuatorfrclimited="false"
+-                                                                                damping="0.001" />
++                                                                                class="tip" />
+                                                                               <geom name="tipG4"
+                                                                                 size="0.000445 0.000747502"
+                                                                                 pos="0.000747502 0 0"
+@@ -378,11 +326,7 @@
+                                                                                 pos="0.001495 0 0"
+                                                                                 quat="0.999999 0 0 0.00152189">
+                                                                                 <joint name="tipJ_5"
+-                                                                                  pos="0 0 0"
+-                                                                                  type="ball"
+-                                                                                  group="3"
+-                                                                                  actuatorfrclimited="false"
+-                                                                                  damping="0.001" />
++                                                                                  class="tip" />
+                                                                                 <geom name="tipG5"
+                                                                                   size="0.000445 0.000495006"
+                                                                                   pos="0.000495006 0 0"
+@@ -397,11 +341,7 @@
+                                                                                   quat="1 0 0 0.000442092">
+                                                                                   <joint
+                                                                                     name="tipJ_6"
+-                                                                                    pos="0 0 0"
+-                                                                                    type="ball"
+-                                                                                    group="3"
+-                                                                                    actuatorfrclimited="false"
+-                                                                                    damping="0.001" />
++                                                                                    class="tip" />
+                                                                                   <geom name="tipG6"
+                                                                                     size="0.000445 0.000337006"
+                                                                                     pos="0.000337006 0 0"
+@@ -417,11 +357,7 @@
+                                                                                     quat="1 0 0 -0.00023511">
+                                                                                     <joint
+                                                                                       name="tipJ_7"
+-                                                                                      pos="0 0 0"
+-                                                                                      type="ball"
+-                                                                                      group="3"
+-                                                                                      actuatorfrclimited="false"
+-                                                                                      damping="0.001" />
++                                                                                      class="tip" />
+                                                                                     <geom
+                                                                                       name="tipG7"
+                                                                                       size="0.000445 0.000274504"
+@@ -438,11 +374,7 @@
+                                                                                       quat="0.999996 0 0 -0.00273221">
+                                                                                       <joint
+                                                                                         name="tipJ_8"
+-                                                                                        pos="0 0 0"
+-                                                                                        type="ball"
+-                                                                                        group="3"
+-                                                                                        actuatorfrclimited="false"
+-                                                                                        damping="0.001" />
++                                                                                        class="tip" />
+                                                                                       <geom
+                                                                                         name="tipG8"
+                                                                                         size="0.000445 0.000306"
+@@ -459,11 +391,7 @@
+                                                                                         quat="0.999999 0 0 -0.00115607">
+                                                                                         <joint
+                                                                                           name="tipJ_9"
+-                                                                                          pos="0 0 0"
+-                                                                                          type="ball"
+-                                                                                          group="3"
+-                                                                                          actuatorfrclimited="false"
+-                                                                                          damping="0.001" />
++                                                                                          class="tip" />
+                                                                                         <geom
+                                                                                           name="tipG9"
+                                                                                           size="0.000445 0.000432501"
+@@ -480,11 +408,7 @@
+                                                                                           quat="0.999544 0 0 0.0301886">
+                                                                                           <joint
+                                                                                             name="tipJ_10"
+-                                                                                            pos="0 0 0"
+-                                                                                            type="ball"
+-                                                                                            group="3"
+-                                                                                            actuatorfrclimited="false"
+-                                                                                            damping="0.001" />
++                                                                                            class="tip" />
+                                                                                           <geom
+                                                                                             name="tipG10"
+                                                                                             size="0.000445 0.00099067"
+@@ -501,11 +425,7 @@
+                                                                                             quat="0.997196 0 0 0.0748379">
+                                                                                             <joint
+                                                                                               name="tipJ_11"
+-                                                                                              pos="0 0 0"
+-                                                                                              type="ball"
+-                                                                                              group="3"
+-                                                                                              actuatorfrclimited="false"
+-                                                                                              damping="0.001" />
++                                                                                              class="tip" />
+                                                                                             <geom
+                                                                                               name="tipG11"
+                                                                                               size="0.000445 0.000850308"
+@@ -522,11 +442,7 @@
+                                                                                               quat="0.995725 0 0 0.0923696">
+                                                                                               <joint
+                                                                                                 name="tipJ_12"
+-                                                                                                pos="0 0 0"
+-                                                                                                type="ball"
+-                                                                                                group="3"
+-                                                                                                actuatorfrclimited="false"
+-                                                                                                damping="0.001" />
++                                                                                                class="tip" />
+                                                                                               <geom
+                                                                                                 name="tipG12"
+                                                                                                 size="0.000445 0.000749617"
+@@ -543,11 +459,7 @@
+                                                                                                 quat="0.994725 0 0 0.102582">
+                                                                                                 <joint
+                                                                                                   name="tipJ_13"
+-                                                                                                  pos="0 0 0"
+-                                                                                                  type="ball"
+-                                                                                                  group="3"
+-                                                                                                  actuatorfrclimited="false"
+-                                                                                                  damping="0.001" />
++                                                                                                  class="tip" />
+                                                                                                 <geom
+                                                                                                   name="tipG13"
+                                                                                                   size="0.000445 0.000692304"
+@@ -564,11 +476,7 @@
+                                                                                                   quat="0.994763 0 0 0.102211">
+                                                                                                   <joint
+                                                                                                     name="tipJ_14"
+-                                                                                                    pos="0 0 0"
+-                                                                                                    type="ball"
+-                                                                                                    group="3"
+-                                                                                                    actuatorfrclimited="false"
+-                                                                                                    damping="0.001" />
++                                                                                                    class="tip" />
+                                                                                                   <geom
+                                                                                                     name="tipG14"
+                                                                                                     size="0.000445 0.000675394"
+@@ -585,11 +493,7 @@
+                                                                                                     quat="0.996096 0 0 0.088279">
+                                                                                                     <joint
+                                                                                                       name="tipJ_15"
+-                                                                                                      pos="0 0 0"
+-                                                                                                      type="ball"
+-                                                                                                      group="3"
+-                                                                                                      actuatorfrclimited="false"
+-                                                                                                      damping="0.001" />
++                                                                                                      class="tip" />
+                                                                                                     <geom
+                                                                                                       name="tipG15"
+                                                                                                       size="0.000445 0.000691159"
+@@ -606,11 +510,7 @@
+                                                                                                       quat="0.997624 0 0 0.0688947">
+                                                                                                       <joint
+                                                                                                         name="tipJ_16"
+-                                                                                                        pos="0 0 0"
+-                                                                                                        type="ball"
+-                                                                                                        group="3"
+-                                                                                                        actuatorfrclimited="false"
+-                                                                                                        damping="0.001" />
++                                                                                                        class="tip" />
+                                                                                                       <geom
+                                                                                                         name="tipG16"
+                                                                                                         size="0.000445 0.000729"
+@@ -627,11 +527,7 @@
+                                                                                                         quat="0.99882 0 0 0.0485588">
+                                                                                                         <joint
+                                                                                                           name="tipJ_17"
+-                                                                                                          pos="0 0 0"
+-                                                                                                          type="ball"
+-                                                                                                          group="3"
+-                                                                                                          actuatorfrclimited="false"
+-                                                                                                          damping="0.001" />
++                                                                                                          class="tip" />
+                                                                                                         <geom
+                                                                                                           name="tipG17"
+                                                                                                           size="0.000445 0.00077663"
+@@ -648,11 +544,7 @@
+                                                                                                           quat="0.999543 0 0 0.0302407">
+                                                                                                           <joint
+                                                                                                             name="tipJ_18"
+-                                                                                                            pos="0 0 0"
+-                                                                                                            type="ball"
+-                                                                                                            group="3"
+-                                                                                                            actuatorfrclimited="false"
+-                                                                                                            damping="0.001" />
++                                                                                                            class="tip" />
+                                                                                                           <geom
+                                                                                                             name="tipG18"
+                                                                                                             size="0.000445 0.000829914"
+@@ -669,11 +561,7 @@
+                                                                                                             quat="0.99987 0 0 0.0161458">
+                                                                                                             <joint
+                                                                                                               name="tipJ_last"
+-                                                                                                              pos="0 0 0"
+-                                                                                                              type="ball"
+-                                                                                                              group="3"
+-                                                                                                              actuatorfrclimited="false"
+-                                                                                                              damping="0.001" />
++                                                                                                              class="tip" />
+                                                                                                             <geom
+                                                                                                               name="tipG19"
+                                                                                                               size="0.000445 0.000882851"
+@@ -774,7 +662,6 @@
+     <exclude body1="guidewireB_25" body2="guidewireB_26" />
+     <exclude body1="guidewireB_26" body2="guidewireB_27" />
+     <exclude body1="guidewireB_27" body2="guidewireB_last" />
+-    <exclude body1="guidewireB_last" body2="guidewireB_first" />
+     <exclude body1="tipB_first" body2="tipB_1" />
+     <exclude body1="tipB_1" body2="tipB_2" />
+     <exclude body1="tipB_2" body2="tipB_3" />
+@@ -798,7 +685,6 @@
+ 
+   <actuator>
+     <plugin name="slider" actdim="1" ctrlrange="0 0.15" instance="slider-pid" joint="slider" />
+-    <plugin name="rotator" actdim="1" ctrlrange="-200 200" instance="rotator-pid"
+-      joint="rotator" />
++    <plugin name="rotator" actdim="1" ctrlrange="-200 200" instance="rotator-pid" joint="rotator" />
+   </actuator>
+ </mujoco>
