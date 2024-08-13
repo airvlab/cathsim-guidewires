@@ -3,10 +3,10 @@
 
   <default>
     <default class="guidewire">
-      <geom condim="1" rgba="0.8 0.2 0.1 1" />
+      <geom condim="6"  margin="0.003" rgba="0.8 0.2 0.1 1" />
     </default>
     <default class="tip">
-      <geom condim="1" rgba="0.8 0.2 0.1 1" />
+      <geom condim="6"  margin="0.003" rgba="0.8 0.2 0.1 1" />
     </default>
   </default>
 
@@ -354,6 +354,6 @@
 
   <actuator>
     <plugin name="slider" actdim="1" ctrlrange="0 0.20" instance="slider-pid" joint="slider" />
-    <plugin name="rotator" actdim="1" ctrlrange="-200 200" instance="rotator-pid" joint="rotator" />
+    <plugin name="rotator" actdim="1" ctrlrange="-6.28 6.28" instance="rotator-pid" joint="rotator" />
   </actuator>
 </mujoco>
