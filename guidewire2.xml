@@ -1,15 +1,16 @@
 <mujoco model="guidewire">
   <compiler angle="degree"></compiler>
-  <visual>
-    <global elevation="-30"></global>
-  </visual>
-  <default>
-    <default class="guidewire_tips">
-      <!-- <geom type="capsule" condim="1" rgba="0 0 1 1" /> -->
-      <geom condim="1" rgba=".8 .2 .1 1"  />
-    </default>
 
+  <default>
+    <default class="guidewire">
+      <geom condim="4" rgba="0 1 0 1" margin="3e-3"/>
+    </default>
+    
+    <default class="tip">
+      <geom condim="4" rgba="0 1 0 1" margin="3e-3"/>
+    </default>
   </default>
+
   <extension>
     <plugin plugin="mujoco.pid">
       <instance name="slider-pid">
@@ -39,30 +40,31 @@
       </instance>
     </plugin>
   </extension>
+
   <worldbody>
-    <frame euler="0 0 90" pos="0 -.3 0.002">
-      <body name="guidewire" childclass="guidewire_tips">
+    <frame >
+      <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0 -.3 0.002">
         <joint axis="1 0 0" damping=".2" limited="true" name="slider" range="-.1 .1" type="slide"></joint>
         <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
-        <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable" >
+        <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable">
           <plugin instance="compositeguidewire"></plugin>
-          <joint damping=".001" kind="main"></joint>
+          <joint damping=".015" kind="main"></joint>
+          <joint damping=".015" kind="twist"></joint>
           <geom type="capsule" size=".000445"/>
         </composite>
-      </body>
-    </frame>
-    <frame euler="0 0 0" pos="0 -.05 0.002">
-      <body name="tip" childclass="guidewire_tips">
-        <composite initial="none" prefix="tip" type="cable" vertex=" 0.000000 -0.000000 0.000000 0.000009 0.005408 0.000000 0.000014 0.009554 0.000000 0.000015 0.012627 0.000000 0.000013 0.014815 0.000000 0.000010 0.016310 0.000000 0.000005 0.017300 0.000000 0.000001 0.017974 0.000000 -0.000002 0.018523 0.000000 -0.000002 0.019135 0.000000 0.000000 0.020000 0.000000 -0.000115 0.021978 0.000000 -0.000466 0.023642 0.000000 -0.001040 0.025027 0.000000 -0.001820 0.026171 0.000000 -0.002792 0.027109 0.000000 -0.003940 0.027879 0.000000 -0.005251 0.028517 0.000000 -0.006707 0.029058 0.000000 -0.008295 0.029541 0.000000 -0.010000 0.030000 0.000000 ">
-          <plugin instance="compositetip"></plugin>
-          <geom type="capsule" size=".000445"/>
-          <joint damping=".001" kind="main"></joint>
-        </composite>
+        <body name="tip" childclass="tip" euler="0 0 -90" pos="0.25 0 0">
+          <composite initial="none" prefix="tip" type="cable" vertex=" 0.000000 -0.000000 0.000000 0.000009 0.005408 0.000000 0.000014 0.009554 0.000000 0.000015 0.012627 0.000000 0.000013 0.014815 0.000000 0.000010 0.016310 0.000000 0.000005 0.017300 0.000000 0.000001 0.017974 0.000000 -0.000002 0.018523 0.000000 -0.000002 0.019135 0.000000 0.000000 0.020000 0.000000 -0.000115 0.021978 0.000000 -0.000466 0.023642 0.000000 -0.001040 0.025027 0.000000 -0.001820 0.026171 0.000000 -0.002792 0.027109 0.000000 -0.003940 0.027879 0.000000 -0.005251 0.028517 0.000000 -0.006707 0.029058 0.000000 -0.008295 0.029541 0.000000 -0.010000 0.030000 0.000000 ">
+            <plugin instance="compositetip"></plugin>
+            <geom type="capsule" size=".000445"/>
+            <joint damping=".015" kind="main"></joint>
+            <joint damping=".015" kind="twist"></joint>
+          </composite>
+        </body>
       </body>
     </frame>
   </worldbody>
   <actuator>
-    <plugin actdim="2" ctrlrange="0 0.5" instance="slider-pid" joint="slider"></plugin>
-    <plugin actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid" joint="rotator"></plugin>
+    <plugin actdim="2" ctrlrange="0 0.2" instance="slider-pid" joint="slider"></plugin>
+    <plugin actdim="2" ctrlrange="-3.15 3.15" instance="rotator-pid" joint="rotator"></plugin>
   </actuator>
 </mujoco>
