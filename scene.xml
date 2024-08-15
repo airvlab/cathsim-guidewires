@@ -1,28 +1,36 @@
 <mujoco>
   <visual>
-    <global elevation="-30"></global>
+    <global elevation="-30" />
   </visual>
-  <option density="1055" integrator="implicitfast" viscosity="0.004"></option>
-  <compiler meshdir="asset" texturedir="asset"></compiler>
-  <statistic meansize=".05"></statistic>
-  <include file="guidewire2.xml"></include>
+
+  <option density="1055" integrator="implicitfast" viscosity="0.004" />
+
+  <compiler meshdir="asset" texturedir="asset" />
+
+  <statistic meansize=".05" />
+
+  <include file="guidewire_angled.xml" />
+
   <visual>
-    <rgba haze="0.15 0.25 0.35 1"></rgba>
-    <quality shadowsize="4096"></quality>
-    <map fogend="15" fogstart="1" haze="1" shadowscale="0.5" stiffness="700" zfar="40"></map>
+    <rgba haze="0.15 0.25 0.35 1" />
+    <quality shadowsize="4096" />
+    <map fogend="15" fogstart="1" haze="1" shadowscale="0.5" stiffness="700" zfar="40" />
   </visual>
   <asset>
-    <texture builtin="gradient" height="512" rgb1="0.3 0.5 0.7" rgb2="0 0 0" type="skybox" width="512"></texture>
-    <texture builtin="checker" height="512" mark="cross" markrgb=".8 .8 .8" name="texplane" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" type="2d" width="512"></texture>
-    <material name="matplane" reflectance="0.3" texrepeat="10 10" texture="texplane" texuniform="true"></material>
+    <texture builtin="gradient" height="512" rgb1="0.3 0.5 0.7" rgb2="0 0 0" type="skybox"
+      width="512" />
+    <texture builtin="checker" height="512" mark="cross" markrgb=".8 .8 .8" name="texplane"
+      rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" type="2d" width="512" />
+    <material name="matplane" reflectance="0.3" texrepeat="10 10" texture="texplane"
+      texuniform="true" />
   </asset>
   <worldbody>
-    <light castshadow="false" diffuse=".4 .4 .4" dir="0 0 -1" pos="0 0 2.0" specular="0.1 0.1 0.1"></light>
-    <light diffuse=".8 .8 .8" dir="0 0 -1" directional="true" pos="0 0 4" specular="0.2 0.2 0.2"></light>
-    <!-- <camera name="camera_top" mode="fixed" pos="0 0 3" orthographic="true" fovy="0.6" xyaxes="1 0 0 0 0 1"></camera > -->
-    <camera fovy="0.7" name="top_graphic" orthographic="true" pos="0 -0.4 0.7" xyaxes="1 0 0 0 1 0"></camera>
-    <camera mode="fixed" name="side" orthographic="false" pos="0 -1.1 0" xyaxes="1 0 0 0 0 1"></camera>
-    <geom condim="1" material="matplane" name="ground" pos="0 0 -.1" quat="1 0 0 0" size="0 0 1" type="plane"></geom>
-    <geom conaffinity="0" condim="3" contype="0" name="orientation" pos="0 0 0" rgba="0.7 0.5 0.3 0.6" size="0.1 0.001 0.1" type="box"></geom>
+    <light castshadow="false" diffuse=".4 .4 .4" dir="0 0 -1" pos="0 0 2.0" specular="0.1 0.1 0.1" />
+    <light diffuse=".8 .8 .8" dir="0 0 -1" directional="true" pos="0 0 4" specular="0.2 0.2 0.2" />
+    <camera fovy="0.7" name="top_graphic" orthographic="true" pos="0 -0.4 0.7" xyaxes="1 0 0 0 1 0" />
+    <geom condim="1" material="matplane" name="ground" pos="0 0 -.1" quat="1 0 0 0" size="0 0 1"
+      type="plane" />
+    <geom conaffinity="0" condim="3" contype="0" name="orientation" pos="0 0 0"
+      rgba="0.7 0.5 0.3 0.6" size="0.1 0.001 0.1" type="box" />
   </worldbody>
 </mujoco>
