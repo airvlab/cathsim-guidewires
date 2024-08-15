@@ -14,21 +14,9 @@
   </default>
 
   <extension>
-    <plugin plugin="mujoco.pid">
-      <instance name="slider-pid">
-        <config key="kp" value="0.05"></config>
-        <config key="slewmax" value="4"></config>
-      </instance>
-      <instance name="rotator-pid">
-        <config key="kp" value="0.1"></config>
-        <config key="kd" value="0.01"></config>
-        <config key="imax" value="0.0 1"></config>
-        <config key="slewmax" value="4"></config>
-      </instance>
-    </plugin>
     <plugin plugin="mujoco.elasticity.cable">
       <instance name="compositeguidewire">
-        <config key="bend" value="1e8"></config>
+        <config key="bend" value="2e8"></config>
         <config key="vmax" value="0.05"></config>
       </instance>
       <instance name="compositetip">
@@ -39,10 +27,10 @@
   </extension>
 
   <actuator>
-    <plugin name="slider" ctrllimited="true" actdim="1" ctrlrange="0 0.20" instance="slider-pid"
-      joint="slider" forcerange="-1 1" />
-    <plugin name="rotator" ctrllimited="true" actdim="1" ctrlrange="-200 200" instance="rotator-pid"
-      joint="rotator" forcerange="-1 1" />
+    <position name="slider" joint="slider" kp="1" kv="0" timeconst="0" inheritrange="0.9"
+      forcerange="0 0.05" />
+    <position name="rotator" joint="rotator" kp="1" kv="0" timeconst="0" inheritrange="0.9"
+      forcerange="-0 10" />
   </actuator>
 
   <custom>
@@ -55,8 +43,8 @@
       <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002"
         quat="0 -0.707107 -0.70710 0">
         <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2"
-          damping="0.2" />
-        <joint name="rotator" pos="0 0 0" axis="1 0 0" limited="false" range="100 100" damping="0.2" />
+          damping="5" />
+        <joint name="rotator" pos="0 0 0" axis="1 0 0" range="-100 100" damping="5" />
         <body name="guidewireB_first">
           <geom name="guidewireG0" size="0.000445 0.00431034" pos="0.00431034 0 0"
             quat="0.707107 0 -0.707107 0" />
