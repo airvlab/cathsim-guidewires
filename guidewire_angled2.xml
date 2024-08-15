@@ -1,0 +1,413 @@
+<mujoco model="guidewire">
+    <compiler angle="radian"/>
+
+    <default>
+        <default class="guidewire_tip">
+            <geom type="capsule" condim="3" margin="0.003"/>
+            <default class="guidewire">
+                <geom rgba="0.1 0.1 0.1 1"/>
+            </default>
+            <default class="tip">
+                <geom rgba="0.1 0.1 0.1 1"/>
+            </default>
+        </default>
+    </default>
+
+    <extension>
+        <plugin plugin="mujoco.elasticity.cable">
+            <instance name="compositeguidewire">
+                <config key="bend" value="2e8"/>
+                <config key="vmax" value="0.05"/>
+            </instance>
+            <instance name="compositetip">
+                <config key="bend" value="5e6"/>
+                <config key="vmax" value="0.05"/>
+            </instance>
+        </plugin>
+    </extension>
+
+    <actuator>
+        <general name="slider" joint="slider" ctrlrange="-0.18 0.18" forcerange="-0.1 0.1" dyntype="filterexact" dynprm="0.1 0 0 0 0 0 0 0 0 0" biastype="affine" gainprm="60" biasprm="0 -60"/>
+        <general name="rotator" joint="rotator" forcerange="-10 10" dyntype="filterexact" dynprm="0.1 0 0 0 0 0 0 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100"/>
+    </actuator>
+
+    <custom>
+        <text name="composite_guidewire" data="rope_guidewire"/>
+        <text name="composite_tip" data="rope_tip"/>
+    </custom>
+
+    <worldbody>
+        <frame>
+            <body name="guidewire" childclass="guidewire" pos="0 -0.3 0.002" quat="0.707107 0 0 0.707107">
+                <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5"/>
+                <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5"/>
+                <body name="guidewireB_first">
+                    <geom name="guidewireG0" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                    <site name="guidewireS_first" pos="0 0 0" group="3"/>
+                    <plugin instance="compositeguidewire"/>
+                    <body name="guidewireB_1" pos="0.00510204 0 0">
+                        <joint name="guidewireJ_1" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                        <geom name="guidewireG1" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"  />
+                        <plugin instance="compositeguidewire"/>
+                        <body name="guidewireB_2" pos="0.00510204 0 0">
+                            <joint name="guidewireJ_2" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                            <geom name="guidewireG2" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                            <plugin instance="compositeguidewire"/>
+                            <body name="guidewireB_3" pos="0.00510204 0 0">
+                                <joint name="guidewireJ_3" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                <geom name="guidewireG3" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                <plugin instance="compositeguidewire"/>
+                                <body name="guidewireB_4" pos="0.00510204 0 0">
+                                    <joint name="guidewireJ_4" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                    <geom name="guidewireG4" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                    <plugin instance="compositeguidewire"/>
+                                    <body name="guidewireB_5" pos="0.00510204 0 0">
+                                        <joint name="guidewireJ_5" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                        <geom name="guidewireG5" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                        <plugin instance="compositeguidewire"/>
+                                        <body name="guidewireB_6" pos="0.00510204 0 0">
+                                            <joint name="guidewireJ_6" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                            <geom name="guidewireG6" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                            <plugin instance="compositeguidewire"/>
+                                            <body name="guidewireB_7" pos="0.00510204 0 0">
+                                                <joint name="guidewireJ_7" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                <geom name="guidewireG7" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                <plugin instance="compositeguidewire"/>
+                                                <body name="guidewireB_8" pos="0.00510204 0 0">
+                                                    <joint name="guidewireJ_8" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                    <geom name="guidewireG8" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                    <plugin instance="compositeguidewire"/>
+                                                    <body name="guidewireB_9" pos="0.00510204 0 0">
+                                                        <joint name="guidewireJ_9" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                        <geom name="guidewireG9" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                        <plugin instance="compositeguidewire"/>
+                                                        <body name="guidewireB_10" pos="0.00510204 0 0">
+                                                            <joint name="guidewireJ_10" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                            <geom name="guidewireG10" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                            <plugin instance="compositeguidewire"/>
+                                                            <body name="guidewireB_11" pos="0.00510204 0 0">
+                                                                <joint name="guidewireJ_11" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                <geom name="guidewireG11" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                <plugin instance="compositeguidewire"/>
+                                                                <body name="guidewireB_12" pos="0.00510204 0 0">
+                                                                    <joint name="guidewireJ_12" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                    <geom name="guidewireG12" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                    <plugin instance="compositeguidewire"/>
+                                                                    <body name="guidewireB_13" pos="0.00510204 0 0">
+                                                                        <joint name="guidewireJ_13" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                        <geom name="guidewireG13" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                        <plugin instance="compositeguidewire"/>
+                                                                        <body name="guidewireB_14" pos="0.00510205 0 0">
+                                                                            <joint name="guidewireJ_14" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                            <geom name="guidewireG14" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                            <plugin instance="compositeguidewire"/>
+                                                                            <body name="guidewireB_15" pos="0.00510204 0 0">
+                                                                                <joint name="guidewireJ_15" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                <geom name="guidewireG15" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                <plugin instance="compositeguidewire"/>
+                                                                                <body name="guidewireB_16" pos="0.00510204 0 0">
+                                                                                    <joint name="guidewireJ_16" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                    <geom name="guidewireG16" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                    <body name="guidewireB_17" pos="0.00510205 0 0">
+                                                                                        <joint name="guidewireJ_17" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                        <geom name="guidewireG17" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                        <body name="guidewireB_18" pos="0.00510204 0 0">
+                                                                                            <joint name="guidewireJ_18" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                            <geom name="guidewireG18" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                            <body name="guidewireB_19" pos="0.00510204 0 0">
+                                                                                                <joint name="guidewireJ_19" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                <geom name="guidewireG19" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                <body name="guidewireB_20" pos="0.00510205 0 0">
+                                                                                                    <joint name="guidewireJ_20" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                    <geom name="guidewireG20" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                    <body name="guidewireB_21" pos="0.00510204 0 0">
+                                                                                                        <joint name="guidewireJ_21" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                        <geom name="guidewireG21" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                        <body name="guidewireB_22" pos="0.00510204 0 0">
+                                                                                                            <joint name="guidewireJ_22" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                            <geom name="guidewireG22" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                            <body name="guidewireB_23" pos="0.00510205 0 0">
+                                                                                                                <joint name="guidewireJ_23" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                <geom name="guidewireG23" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                <body name="guidewireB_24" pos="0.00510204 0 0">
+                                                                                                                    <joint name="guidewireJ_24" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                    <geom name="guidewireG24" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                    <body name="guidewireB_25" pos="0.00510204 0 0">
+                                                                                                                        <joint name="guidewireJ_25" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                        <geom name="guidewireG25" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                        <body name="guidewireB_26" pos="0.00510204 0 0">
+                                                                                                                            <joint name="guidewireJ_26" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                            <geom name="guidewireG26" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                            <body name="guidewireB_27" pos="0.00510204 0 0">
+                                                                                                                                <joint name="guidewireJ_27" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                <geom name="guidewireG27" size="0.000445 0.00255103" pos="0.00255103 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                <body name="guidewireB_28" pos="0.00510205 0 0">
+                                                                                                                                    <joint name="guidewireJ_28" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                    <geom name="guidewireG28" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                    <body name="guidewireB_29" pos="0.00510204 0 0">
+                                                                                                                                        <joint name="guidewireJ_29" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                        <geom name="guidewireG29" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                                        <body name="guidewireB_30" pos="0.00510204 0 0">
+                                                                                                                                            <joint name="guidewireJ_30" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                            <geom name="guidewireG30" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                                            <body name="guidewireB_31" pos="0.00510204 0 0">
+                                                                                                                                                <joint name="guidewireJ_31" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                <geom name="guidewireG31" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                                <body name="guidewireB_32" pos="0.00510204 0 0">
+                                                                                                                                                    <joint name="guidewireJ_32" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                    <geom name="guidewireG32" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                                    <body name="guidewireB_33" pos="0.00510204 0 0">
+                                                                                                                                                        <joint name="guidewireJ_33" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                        <geom name="guidewireG33" size="0.000445 0.00255103" pos="0.00255103 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                                                        <body name="guidewireB_34" pos="0.00510205 0 0">
+                                                                                                                                                            <joint name="guidewireJ_34" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                            <geom name="guidewireG34" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                                                            <body name="guidewireB_35" pos="0.00510204 0 0">
+                                                                                                                                                                <joint name="guidewireJ_35" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                <geom name="guidewireG35" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                                                <body name="guidewireB_36" pos="0.00510204 0 0">
+                                                                                                                                                                    <joint name="guidewireJ_36" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                    <geom name="guidewireG36" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                                                    <body name="guidewireB_37" pos="0.00510204 0 0">
+                                                                                                                                                                        <joint name="guidewireJ_37" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                        <geom name="guidewireG37" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                                                                        <body name="guidewireB_38" pos="0.00510204 0 0">
+                                                                                                                                                                            <joint name="guidewireJ_38" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                            <geom name="guidewireG38" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                                                                            <body name="guidewireB_39" pos="0.00510204 0 0">
+                                                                                                                                                                                <joint name="guidewireJ_39" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                <geom name="guidewireG39" size="0.000445 0.00255103" pos="0.00255103 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                <body name="guidewireB_40" pos="0.00510205 0 0">
+                                                                                                                                                                                    <joint name="guidewireJ_40" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                    <geom name="guidewireG40" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                    <body name="guidewireB_41" pos="0.00510204 0 0">
+                                                                                                                                                                                        <joint name="guidewireJ_41" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                        <geom name="guidewireG41" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                        <body name="guidewireB_42" pos="0.00510204 0 0">
+                                                                                                                                                                                            <joint name="guidewireJ_42" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                            <geom name="guidewireG42" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                            <body name="guidewireB_43" pos="0.00510204 0 0">
+                                                                                                                                                                                                <joint name="guidewireJ_43" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                <geom name="guidewireG43" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                <body name="guidewireB_44" pos="0.00510204 0 0">
+                                                                                                                                                                                                    <joint name="guidewireJ_44" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                    <geom name="guidewireG44" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                    <body name="guidewireB_45" pos="0.00510204 0 0">
+                                                                                                                                                                                                        <joint name="guidewireJ_45" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                        <geom name="guidewireG45" size="0.000445 0.00255103" pos="0.00255103 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                        <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                        <body name="guidewireB_46" pos="0.00510205 0 0">
+                                                                                                                                                                                                            <joint name="guidewireJ_46" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                            <geom name="guidewireG46" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                                            <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                            <body name="guidewireB_47" pos="0.00510204 0 0">
+                                                                                                                                                                                                                <joint name="guidewireJ_47" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                <geom name="guidewireG47" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                                                <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                                <body name="guidewireB_last" pos="0.00510204 0 0">
+                                                                                                                                                                                                                    <joint name="guidewireJ_last" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                    <geom name="guidewireG48" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                    <site name="guidewireS_last" pos="0.00510204 0 0" group="3"/>
+                                                                                                                                                                                                                    <plugin instance="compositeguidewire"/>
+                                                                                                                                                                                                                    <body name="tip" childclass="tip" pos="0.00510204 0 0" quat="0 -0.707107  -0.707107 0">
+                                                                                                                                                                                                                        <plugin instance="compositetip"/>
+                                                                                                                                                                                                                        <body name="tipB_first" pos="-0.007 0.03 0" quat="0 0.978382 -0.206808 0">
+                                                                                                                                                                                                                            <joint name="tipJ_first" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                            <geom name="tipG0" size="0.000445 0.00167913" pos="0.00167913 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                            <site name="tipS_first" pos="0 0 0" group="3"/>
+                                                                                                                                                                                                                            <plugin instance="compositetip"/>
+                                                                                                                                                                                                                            <body name="tipB_1" pos="0.00335826 0 0" quat="0.984832 0 0 0.173512">
+                                                                                                                                                                                                                                <joint name="tipJ_1" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                <geom name="tipG1" size="0.000445 0.0014152" pos="0.0014152 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                <body name="tipB_2" pos="0.00283041 0 0" quat="0.987304 0 0 0.15884">
+                                                                                                                                                                                                                                    <joint name="tipJ_2" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                    <geom name="tipG2" size="0.000445 0.0012901" pos="0.0012901 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                    <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                    <body name="tipB_3" pos="0.00258019 0 0" quat="0.992355 0 0 0.12342">
+                                                                                                                                                                                                                                        <joint name="tipJ_3" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                        <geom name="tipG3" size="0.000445 0.0011939" pos="0.0011939 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                        <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                        <body name="tipB_4" pos="0.00238781 0 0" quat="0.995832 0 0 0.0912064">
+                                                                                                                                                                                                                                            <joint name="tipJ_4" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                            <geom name="tipG4" size="0.000445 0.00104115" pos="0.00104115 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                            <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                            <body name="tipB_5" pos="0.00208229 0 0" quat="-0.999449 0 0 -0.0332065">
+                                                                                                                                                                                                                                                <joint name="tipJ_5" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                                <geom name="tipG5" size="0.000445 0.00137157" pos="0.00137157 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                                <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                                <body name="tipB_6" pos="0.00274314 0 0" quat="0.999992 0 0 -0.00411581">
+                                                                                                                                                                                                                                                    <joint name="tipJ_6" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                                    <geom name="tipG6" size="0.000445 0.0020245" pos="0.0020245 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                                                                                    <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                                    <body name="tipB_7" pos="0.00404901 0 0" quat="-0.999998 0 0 0.00184296">
+                                                                                                                                                                                                                                                        <joint name="tipJ_7" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                                        <geom name="tipG7" size="0.000445 0.002339" pos="0.002339 0 0" quat="0.707107 0 -0.707107 0"/>
+                                                                                                                                                                                                                                                        <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                                        <body name="tipB_8" pos="0.00467801 0 0" quat="1 0 0 -0.000657462">
+                                                                                                                                                                                                                                                            <joint name="tipJ_8" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                                            <geom name="tipG8" size="0.000445 0.00231401" pos="0.00231401 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                                                                                            <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                                            <body name="tipB_last" pos="0.00462802 0 0" quat="1 0 0 -0.000281416">
+                                                                                                                                                                                                                                                                <joint name="tipJ_last" pos="0 0 0" type="ball" group="3" actuatorfrclimited="false" damping="0.015"/>
+                                                                                                                                                                                                                                                                <geom name="tipG9" size="0.000445 0.00195101" pos="0.00195101 0 0" quat="0.707107 0 -0.707107 0" />
+                                                                                                                                                                                                                                                                <site name="tipS_last" pos="0.00390203 0 0" group="3"/>
+                                                                                                                                                                                                                                                                <plugin instance="compositetip"/>
+                                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                                                                </body>
+                                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                                                </body>
+                                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                                </body>
+                                                                                                                                                                                                            </body>
+                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                </body>
+                                                                                                                                                                                            </body>
+                                                                                                                                                                                        </body>
+                                                                                                                                                                                    </body>
+                                                                                                                                                                                </body>
+                                                                                                                                                                            </body>
+                                                                                                                                                                        </body>
+                                                                                                                                                                    </body>
+                                                                                                                                                                </body>
+                                                                                                                                                            </body>
+                                                                                                                                                        </body>
+                                                                                                                                                    </body>
+                                                                                                                                                </body>
+                                                                                                                                            </body>
+                                                                                                                                        </body>
+                                                                                                                                    </body>
+                                                                                                                                </body>
+                                                                                                                            </body>
+                                                                                                                        </body>
+                                                                                                                    </body>
+                                                                                                                </body>
+                                                                                                            </body>
+                                                                                                        </body>
+                                                                                                    </body>
+                                                                                                </body>
+                                                                                            </body>
+                                                                                        </body>
+                                                                                    </body>
+                                                                                </body>
+                                                                            </body>
+                                                                        </body>
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </frame>
+    </worldbody>
+
+    <contact>
+        <exclude body1="guidewireB_first" body2="guidewireB_1"/>
+        <exclude body1="guidewireB_1" body2="guidewireB_2"/>
+        <exclude body1="guidewireB_2" body2="guidewireB_3"/>
+        <exclude body1="guidewireB_3" body2="guidewireB_4"/>
+        <exclude body1="guidewireB_4" body2="guidewireB_5"/>
+        <exclude body1="guidewireB_5" body2="guidewireB_6"/>
+        <exclude body1="guidewireB_6" body2="guidewireB_7"/>
+        <exclude body1="guidewireB_7" body2="guidewireB_8"/>
+        <exclude body1="guidewireB_8" body2="guidewireB_9"/>
+        <exclude body1="guidewireB_9" body2="guidewireB_10"/>
+        <exclude body1="guidewireB_10" body2="guidewireB_11"/>
+        <exclude body1="guidewireB_11" body2="guidewireB_12"/>
+        <exclude body1="guidewireB_12" body2="guidewireB_13"/>
+        <exclude body1="guidewireB_13" body2="guidewireB_14"/>
+        <exclude body1="guidewireB_14" body2="guidewireB_15"/>
+        <exclude body1="guidewireB_15" body2="guidewireB_16"/>
+        <exclude body1="guidewireB_16" body2="guidewireB_17"/>
+        <exclude body1="guidewireB_17" body2="guidewireB_18"/>
+        <exclude body1="guidewireB_18" body2="guidewireB_19"/>
+        <exclude body1="guidewireB_19" body2="guidewireB_20"/>
+        <exclude body1="guidewireB_20" body2="guidewireB_21"/>
+        <exclude body1="guidewireB_21" body2="guidewireB_22"/>
+        <exclude body1="guidewireB_22" body2="guidewireB_23"/>
+        <exclude body1="guidewireB_23" body2="guidewireB_24"/>
+        <exclude body1="guidewireB_24" body2="guidewireB_25"/>
+        <exclude body1="guidewireB_25" body2="guidewireB_26"/>
+        <exclude body1="guidewireB_26" body2="guidewireB_27"/>
+        <exclude body1="guidewireB_27" body2="guidewireB_28"/>
+        <exclude body1="guidewireB_28" body2="guidewireB_29"/>
+        <exclude body1="guidewireB_29" body2="guidewireB_30"/>
+        <exclude body1="guidewireB_30" body2="guidewireB_31"/>
+        <exclude body1="guidewireB_31" body2="guidewireB_32"/>
+        <exclude body1="guidewireB_32" body2="guidewireB_33"/>
+        <exclude body1="guidewireB_33" body2="guidewireB_34"/>
+        <exclude body1="guidewireB_34" body2="guidewireB_35"/>
+        <exclude body1="guidewireB_35" body2="guidewireB_36"/>
+        <exclude body1="guidewireB_36" body2="guidewireB_37"/>
+        <exclude body1="guidewireB_37" body2="guidewireB_38"/>
+        <exclude body1="guidewireB_38" body2="guidewireB_39"/>
+        <exclude body1="guidewireB_39" body2="guidewireB_40"/>
+        <exclude body1="guidewireB_40" body2="guidewireB_41"/>
+        <exclude body1="guidewireB_41" body2="guidewireB_42"/>
+        <exclude body1="guidewireB_42" body2="guidewireB_43"/>
+        <exclude body1="guidewireB_43" body2="guidewireB_44"/>
+        <exclude body1="guidewireB_44" body2="guidewireB_45"/>
+        <exclude body1="guidewireB_45" body2="guidewireB_46"/>
+        <exclude body1="guidewireB_46" body2="guidewireB_47"/>
+        <exclude body1="guidewireB_47" body2="guidewireB_last"/>
+        <exclude body1="guidewireB_last" body2="tip"/>
+        <exclude body1="tip" body2="tipB_first"/>
+        <exclude body1="tipB_first" body2="tipB_1"/>
+        <exclude body1="tipB_1" body2="tipB_2"/>
+        <exclude body1="tipB_2" body2="tipB_3"/>
+        <exclude body1="tipB_3" body2="tipB_4"/>
+        <exclude body1="tipB_4" body2="tipB_5"/>
+        <exclude body1="tipB_5" body2="tipB_6"/>
+        <exclude body1="tipB_6" body2="tipB_7"/>
+        <exclude body1="tipB_7" body2="tipB_8"/>
+        <exclude body1="tipB_8" body2="tipB_last"/>
+
+    </contact>
+
+</mujoco>

@@ -9,7 +9,7 @@
 
   <statistic meansize=".05" />
 
-  <include file="guidewire_angled.xml" />
+  <include file="guidewire_angled2.xml" />
 
   <visual>
     <rgba haze="0.15 0.25 0.35 1" />

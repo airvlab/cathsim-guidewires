@@ -1,0 +1,68 @@
+<mujoco model="guidewire">
+
+  <compiler angle="degree" />
+
+  <default>
+    <default class="guidewire_tip">
+      <geom type="capsule" condim="4" margin="3e-3" />
+      <default class="guidewire">
+        <geom rgba="0.1 0.1 0.1 1" />
+      </default>
+      <default class="tip">
+        <geom rgba="0.1 0.1 0.1 1" />
+      </default>
+    </default>
+  </default>
+
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable">
+      <instance name="compositeguidewire">
+        <config key="bend" value="2e8" />
+        <config key="vmax" value="0.05" />
+      </instance>
+      <instance name="compositetip">
+        <config key="bend" value="5e6" />
+        <config key="vmax" value="0.05" />
+      </instance>
+    </plugin>
+  </extension>
+
+  <actuator>
+    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
+  </actuator>
+
+  <worldbody>
+    <frame>
+      <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0 -.3 0.002">
+        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5" />
+        <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5" />
+        <composite count="50" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable">
+          <plugin instance="compositeguidewire"/>
+          <joint damping=".015" kind="main"/>
+          <geom type="capsule" size=".000445" />
+        </composite>
+      </body>
+      <body name="tip" childclass="tip" pos="0 -.05 0.002">
+        <composite initial="none" prefix="tip" type="cable" vertex="-0.007000 0.030000 0.000000 
+                  -0.003929 0.028641 0.000000 
+                  -0.001888 0.026680 0.000000 
+                  -0.000682 0.024399 0.000000 
+                  -0.000117 0.022079 0.000000 
+                   0.000000 0.020000 0.000000  
+                  -0.000028 0.017257 0.000000 
+                  -0.000036 0.013208 0.000000 
+                  -0.000028 0.008530 0.000000 
+                  -0.000014 0.003902 0.000000 
+                  0.000000 0.000000 0.000000">
+          <plugin instance="compositetip"/>
+          <geom type="capsule" size=".000445" />
+          <joint damping=".015" kind="main"/>
+        </composite>
+      </body>
+    </frame>
+  </worldbody>
+  <contact>
+    <exclude body1="guidewireB_last" body2="tipB_first" />
+  </contact>
+</mujoco>
