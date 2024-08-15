@@ -28,8 +28,8 @@
 
   <actuator>
     <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9"
-      forcerange="0 0.1" />
-    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-0 10" />
+      forcerange="-0.1 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
   </actuator>
 
   <custom>
