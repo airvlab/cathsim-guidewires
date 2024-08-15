@@ -2,6 +2,10 @@
 
   <compiler angle="degree" />
 
+  <asset>
+    <model name="tip" file="tip.xml" />
+  </asset>
+
   <default>
     <default class="guidewire">
       <geom condim="4" rgba="0.1 0.1 0.1 1" margin="3e-3" />
@@ -38,6 +42,7 @@
           <joint damping=".015" kind="main"></joint>
           <geom type="capsule" size=".000445" />
         </composite>
+        <!-- <attach model="tip" body="tip" /> -->
       </body>
     </frame>
   </worldbody>
