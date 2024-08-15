@@ -1,42 +1,44 @@
 <mujoco model="guidewire">
+
+  <compiler angle="degree" />
+
+  <default>
+    <default class="guidewire">
+      <geom condim="4" rgba="0.1 0.1 0.1 1" margin="3e-3" />
+    </default>
+
+    <default class="tip">
+      <geom condim="4" rgba="0.1 0.1 0.1 1" margin="3e-3" />
+    </default>
+  </default>
+
   <extension>
-    <plugin plugin="mujoco.elasticity.cable"></plugin>
-    <plugin plugin="mujoco.pid">
-      <instance name="slider-pid">
-        <config key="kp" value="10.0"></config>
-        <config key="ki" value="10"></config>
-        <config key="kd" value="0.1"></config>
-        <config key="imax" value="1"></config>
-        <config key="slewmax" value="3"></config>
-      </instance>
-      <instance name="rotator-pid">
-        <config key="kp" value="1"></config>
-        <config key="ki" value="1"></config>
-        <config key="kd" value="0.1"></config>
-        <config key="imax" value="5"></config>
-        <config key="slewmax" value="2"></config>
+    <plugin plugin="mujoco.elasticity.cable">
+      <instance name="compositeguidewire">
+        <config key="bend" value="2e8" />
+        <config key="vmax" value="0.05" />
       </instance>
     </plugin>
   </extension>
+
+  <actuator>
+    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9"
+      forcerange="-0.1 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
+  </actuator>
+
   <worldbody>
-    <frame euler="0 0 90" pos="0 -.5 0.002">
-      <body name="guidewire">
-        <joint axis="1 0 0" damping=".2" limited="true" name="slider" range="-.1 .1" type="slide"></joint>
-        <joint axis="1 0 0" damping=".2" limited="false" name="rotator" range="100 100" type="hinge"></joint>
-        <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.5" type="cable">
-          <plugin plugin="mujoco.elasticity.cable">
-            <config key="bend" value="5e9"></config>
-            <config key="vmax" value="0.0004"></config>
-            <config key="flat" value="true"></config>
-          </plugin>
-          <joint damping=".001" kind="main"></joint>
-          <geom condim="1" rgba=".8 .2 .1 1" size=".00089" type="capsule"></geom>
+    <frame>
+      <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0 -.3 0.002">
+        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2"
+          damping="5" />
+        <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5" />
+        <composite count="30" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable">
+          <plugin instance="compositeguidewire"></plugin>
+          <joint damping=".015" kind="main"></joint>
+          <geom type="capsule" size=".000445" />
         </composite>
       </body>
     </frame>
   </worldbody>
-  <actuator>
-    <plugin actdim="2" ctrlrange="-.1 .1" instance="slider-pid" joint="slider" plugin="mujoco.pid"></plugin>
-    <plugin actdim="2" ctrlrange="-12.56 12.56" instance="rotator-pid" joint="rotator" plugin="mujoco.pid"></plugin>
-  </actuator>
 </mujoco>
