@@ -27,10 +27,9 @@
   </extension>
 
   <actuator>
-    <position name="slider" joint="slider" kp="1" kv="0" timeconst="0" inheritrange="0.9"
-      forcerange="0 0.05" />
-    <position name="rotator" joint="rotator" kp="1" kv="0" timeconst="0" inheritrange="0.9"
-      forcerange="-0 10" />
+    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9"
+      forcerange="0 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-0 10" />
   </actuator>
 
   <custom>
@@ -44,7 +43,7 @@
         quat="0 -0.707107 -0.70710 0">
         <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2"
           damping="5" />
-        <joint name="rotator" pos="0 0 0" axis="1 0 0" range="-100 100" damping="5" />
+        <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5" />
         <body name="guidewireB_first">
           <geom name="guidewireG0" size="0.000445 0.00431034" pos="0.00431034 0 0"
             quat="0.707107 0 -0.707107 0" />
@@ -687,7 +686,7 @@
     <exclude body1="guidewireB_25" body2="guidewireB_26" />
     <exclude body1="guidewireB_26" body2="guidewireB_27" />
     <exclude body1="guidewireB_27" body2="guidewireB_last" />
-    <exclude body1="guidewireB_last" body2="guidewireB_first" />
+    <exclude body1="guidewireB_last" body2="tipB_first" />
     <exclude body1="tipB_first" body2="tipB_1" />
     <exclude body1="tipB_1" body2="tipB_2" />
     <exclude body1="tipB_2" body2="tipB_3" />
