@@ -4,7 +4,7 @@
 
   <default>
     <default class="guidewire_tip">
-      <geom type="capsule" condim="3" margin="3e-3" contype="1" conaffinity="2"/>
+      <geom type="capsule" condim="3" margin="3e-3" contype="1" conaffinity="2" />
       <default class="guidewire">
         <geom rgba="0 0 1 1" />
       </default>
@@ -28,25 +28,28 @@
   </extension>
 
   <actuator>
-    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
+    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9"
+      forcerange="-0.1 0.1" />
     <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
   </actuator>
 
   <worldbody>
     <frame>
       <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0.005 -0.2 0.002">
-        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5" />
+        <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2"
+          damping="5" />
         <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5" />
         <composite count="50" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable">
-          <plugin instance="compositeguidewire"/>
-          <joint damping=".015" kind="main"/>
+          <plugin instance="compositeguidewire" />
+          <joint damping=".015" kind="main" />
           <geom type="capsule" size=".000445" />
         </composite>
-        <site name="test" pos="0 0.25 0" group="3"/>
-        
+        <site name="test" pos="0 0.25 0" group="3" />
+
       </body>
       <body name="tip" childclass="tip" pos="0.005 0.05 0.002">
-        <composite initial="none" prefix="tip" type="cable" vertex="
+        <composite initial="none" prefix="tip" type="cable"
+          vertex="
         0.000000 0.000000 0.000000
         0.000000 0.000353 0.000000
         0.000000 0.001360 0.000000
@@ -74,11 +77,11 @@
         0.000000 0.029587 0.005821
         0.000000 0.029900 0.007000
         ">
-          <plugin instance="compositetip"/>
+          <plugin instance="compositetip" />
           <geom type="capsule" size=".000445" />
-          <joint damping=".015" kind="main"/>
+          <joint damping=".015" kind="main" />
         </composite>
-        
+
       </body>
     </frame>
   </worldbody>
