@@ -28,13 +28,32 @@
 
     <!-- <actuator>
         <general name="slider" joint="slider" ctrlrange="-0.18 0.18" forcerange="-0.1 0.1" dyntype="filterexact" dynprm="0.1 0 0 0 0 0 0 0 0 0" biastype="affine" gainprm="60" biasprm="0 -60"/>
-        <general name="rotator" joint="rotator" forcerange="-10 10" dyntype="filterexact" dynprm="0.1 0 0 0 0 0 0 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100"/>
+        <general name="rotator" joint="rotator" ctrlrange="-3.14 3.14" forcerange="-0.01 0.01" dyntype="filterexact" dynprm="0.1 0 0 0 0 0 0 0 0 0" biastype="affine" gainprm="100" biasprm="0 -100"/>
     </actuator> -->
 
-    <actuator>
-        <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
-        <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
-    </actuator>
+  <actuator>
+    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-0.01 0.01" />
+  </actuator>
+
+  <!-- <extension>
+    <plugin plugin="mujoco.pid">
+      <instance name="slider-pid">
+        <config key="kp" value="0.5"></config>
+        <config key="slewmax" value="4"></config>
+      </instance>
+      <instance name="rotator-pid">
+        <config key="kp" value="0.1"></config>
+        <config key="kd" value="0.01"></config>
+        <config key="imax" value="0.0 1"></config>
+        <config key="slewmax" value="2"></config>
+      </instance>
+    </plugin>
+  </extension>
+  <actuator>
+    <plugin name="slider" ctrllimited="true" actdim="1" ctrlrange="-0.2 0.20" instance="slider-pid" joint="slider" forcerange="-1 1" />
+    <plugin name="rotator" ctrllimited="true" actdim="1" ctrlrange="-200 200" instance="rotator-pid" joint="rotator" forcerange="-1 1" />
+  </actuator> -->
 
     <custom>
         <text name="composite_guidewire" data="rope_guidewire"/>
@@ -43,9 +62,9 @@
 
     <worldbody>
         <frame>
-            <body name="guidewire" childclass="guidewire" pos="0 -0.3 0.002" quat="0.707107 0 0 0.707107">
+            <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002" quat="0.707107 0 0 0.707107">
                 <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5"/>
-                <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5"/>
+                <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="0.05"/>
                 <site name="test" pos="0 0.25 0" group="3"/>
                 <body name="guidewireB_first">
                     <geom name="guidewireG0" size="0.000445 0.00255102" pos="0.00255102 0 0" quat="0.707107 0 -0.707107 0" />

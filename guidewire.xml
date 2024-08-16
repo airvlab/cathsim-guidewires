@@ -34,7 +34,7 @@
 
   <worldbody>
     <frame>
-      <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0 -.3 0.002">
+      <body name="guidewire" childclass="guidewire" euler="0 0 90" pos="0.005 -0.2 0.002">
         <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5" />
         <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5" />
         <composite count="50" curve="s" initial="none" prefix="guidewire" size="0.25" type="cable">
@@ -43,8 +43,9 @@
           <geom type="capsule" size=".000445" />
         </composite>
         <site name="test" pos="0 0.25 0" group="3"/>
+        
       </body>
-      <body name="tip" childclass="tip" pos="0 -.05 0.002">
+      <body name="tip" childclass="tip" pos="0.005 0.05 0.002">
         <composite initial="none" prefix="tip" type="cable" vertex="
         0.000000 0.000000 0.000000
         0.000000 0.000353 0.000000

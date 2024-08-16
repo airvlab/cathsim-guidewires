@@ -26,9 +26,26 @@
     </plugin>
   </extension>
 
+  <extension>
+    <plugin plugin="mujoco.pid">
+      <instance name="slider-pid">
+        <config key="kp" value="0.05"></config>
+        <config key="slewmax" value="4"></config>
+      </instance>
+      <instance name="rotator-pid">
+        <config key="kp" value="0.1"></config>
+        <config key="kd" value="0.01"></config>
+        <config key="imax" value="0.0 1"></config>
+        <config key="slewmax" value="4"></config>
+      </instance>
+    </plugin>
+  </extension>
+
   <actuator>
-    <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
-    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" />
+    <!-- <position name="slider" joint="slider" kp="60" kv="0" timeconst="0.1" inheritrange="0.9" forcerange="-0.1 0.1" />
+    <position name="rotator" joint="rotator" kp="100" kv="0" timeconst="0.1" forcerange="-10 10" /> -->
+    <plugin name="slider" ctrllimited="true" actdim="1" ctrlrange="0 0.20" instance="slider-pid" joint="slider" forcerange="-0.01 0.01" />
+    <plugin name="rotator" ctrllimited="true" actdim="1" ctrlrange="-200 200" instance="rotator-pid" joint="rotator" forcerange="-1 1" />
   </actuator>
 
   <custom>

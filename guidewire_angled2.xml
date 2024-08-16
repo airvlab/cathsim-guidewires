@@ -44,7 +44,7 @@
 
     <worldbody>
         <frame>
-            <body name="guidewire" childclass="guidewire" pos="0 -0.3 0.002" quat="0.707107 0 0 0.707107">
+            <body name="guidewire" childclass="guidewire" pos="0.005 -0.2 0.002" quat="0.707107 0 0 0.707107">
                 <joint name="slider" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.2 0.2" damping="5"/>
                 <joint name="rotator" pos="0 0 0" axis="1 0 0" damping="5"/>
                 <body name="guidewireB_first">
